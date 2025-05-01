@@ -2,6 +2,22 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
 
+First of all you need to install angular CLI in your local system
+
+```bash
+npm install -g @angular/cli
+```
+
+### Create new project using angular CLI
+
+Hit the command in the terminal
+
+```bash
+ng new <project-name>
+```
+
+You Should replace `<project-name>` with your project name
+
 ## Development server
 
 To start a local development server, run:

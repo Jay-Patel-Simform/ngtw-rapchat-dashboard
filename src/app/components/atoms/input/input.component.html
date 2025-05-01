@@ -1,0 +1,20 @@
+<div class="relative w-full">
+  <input
+    class="placehoder:text-[#4B506D] h-[42px] w-full rounded-lg border border-[#F0F1F7] bg-[#FCFDFE] py-2 ps-4 pe-2 placeholder:font-(family-name:--font-mulish) placeholder:text-sm placeholder:font-normal placeholder:opacity-40"
+    [type]="getInputType()"
+    [placeholder]="inputPlaceholder" />
+
+  @if (isPassword) {
+    <button
+      type="button"
+      (click)="togglePasswordVisibility()"
+      class="absolute inset-y-0 end-2 flex cursor-pointer items-center">
+      <svg-icon
+        [src]="
+          showPassword
+            ? '/assets/icons/eye-open.svg'
+            : '/assets/icons/eye-close.svg'
+        " />
+    </button>
+  }
+</div>

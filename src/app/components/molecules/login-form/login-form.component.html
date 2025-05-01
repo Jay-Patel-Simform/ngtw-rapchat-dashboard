@@ -1,0 +1,12 @@
+<form class="grid gap-6" (submit)="onSubmit($event)">
+  <app-input-with-label
+    label="Email"
+    inputType="email"
+    inputPlaceholder="Email Address" />
+  <app-input-with-label
+    label="Password"
+    inputType="password"
+    inputPlaceholder="Password"
+    [isPassword]="true" />
+  <app-button [buttonType]="'submit'">Log In</app-button>
+</form>
