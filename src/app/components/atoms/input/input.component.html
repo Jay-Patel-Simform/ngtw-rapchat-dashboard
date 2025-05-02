@@ -1,20 +1,30 @@
-<div class="relative w-full">
-  <input
-    class="placehoder:text-muted bg-light-gray-2 placeholder:font-mulish h-[42px] w-full rounded-lg border border-[var(--border-light-2)] py-2 ps-4 pe-2 placeholder:text-sm placeholder:font-normal placeholder:opacity-40"
-    [type]="getInputType()"
-    [placeholder]="inputPlaceholder" />
-
-  @if (isPassword) {
-    <button
-      type="button"
-      (click)="togglePasswordVisibility()"
-      class="absolute inset-y-0 end-2 flex cursor-pointer items-center">
-      <svg-icon
-        [src]="
-          showPassword
-            ? '/assets/icons/eye-open.svg'
-            : '/assets/icons/eye-close.svg'
-        " />
-    </button>
+<div class="relative flex w-full flex-col gap-1.5">
+  @if (label) {
+    <label
+      [attr.for]="inputId"
+      class="font-inter text-text-muted text-xs font-bold uppercase"
+      >{{ label }}</label
+    >
   }
+  <div class="relative w-full">
+    <input
+      class="placehoder:text-text-muted bg-bg-light-gray-2 placeholder:font-mulish h-[42px] w-full rounded-lg border border-[var(--border-light-2)] py-2 ps-4 pe-2 placeholder:text-sm placeholder:font-normal placeholder:opacity-40"
+      [type]="getInputType()"
+      [placeholder]="inputPlaceholder"
+      [id]="inputId" />
+
+    @if (isPassword) {
+      <button
+        type="button"
+        (click)="togglePasswordVisibility()"
+        class="absolute inset-y-0 end-2 flex cursor-pointer items-center">
+        <svg-icon
+          [src]="
+            showPassword
+              ? '/assets/icons/eye-open.svg'
+              : '/assets/icons/eye-close.svg'
+          " />
+      </button>
+    }
+  </div>
 </div>
