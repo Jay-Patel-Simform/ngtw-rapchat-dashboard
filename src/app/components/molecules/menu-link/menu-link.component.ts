@@ -1,17 +1,19 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   Router,
   NavigationEnd,
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
+
 import { Subscription } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
   selector: 'app-menu-link',
   standalone: true,
-  imports: [RouterLink, CommonModule, RouterLinkActive], // Import CommonModule
+  imports: [RouterLink, CommonModule, RouterLinkActive, AngularSvgIconModule], // Import CommonModule
   templateUrl: './menu-link.component.html',
   styles: `
     .active {
@@ -23,6 +25,8 @@ import { CommonModule } from '@angular/common';
 export class MenuLinkComponent {
   isActive = false;
   @Input() href = '#';
+  @Input() label = '';
+  @Input() icon = '';
 
   private routeSubscription!: Subscription;
 

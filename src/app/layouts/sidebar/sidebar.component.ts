@@ -1,19 +1,11 @@
 import { Component } from '@angular/core';
-import { AngularSvgIconModule } from 'angular-svg-icon';
-import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { LogoWithTextComponent } from '../../components/molecules/logo-with-text/logo-with-text.component';
 import { MenuLinkComponent } from '../../components/molecules/menu-link/menu-link.component';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [
-    LogoWithTextComponent,
-    AngularSvgIconModule,
-    MenuLinkComponent,
-    RouterLink,
-    RouterLinkActive,
-  ],
+  imports: [LogoWithTextComponent, MenuLinkComponent],
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
