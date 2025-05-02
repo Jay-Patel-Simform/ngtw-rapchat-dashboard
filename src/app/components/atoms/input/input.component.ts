@@ -9,10 +9,12 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   templateUrl: './input.component.html',
 })
 export class InputComponent {
+  // input props
   @Input() inputType: HTMLInputElement['type'] = 'text';
   @Input() inputPlaceholder: string = 'Enter any value';
   @Input() isPassword: boolean = false;
 
+  // state
   showPassword: boolean = false;
 
   togglePasswordVisibility() {

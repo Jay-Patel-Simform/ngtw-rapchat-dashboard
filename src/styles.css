@@ -12,6 +12,8 @@
     --text-muted: #4b506d;
     --custom-primary: rgba(55, 81, 255, 1);
     --border-light: rgba(223, 224, 235, 1);
+    --border-light-2: #f0f1f7;
+    --background-gray-2: '#FCFDFE';
     --shadow-primary: 0 4px 12px 0 #3751ff3d;
   }
 
@@ -23,6 +25,8 @@
     --text-muted: #4b506d;
     --custom-primary: rgba(55, 81, 255, 1);
     --border-light: rgba(223, 224, 235, 1);
+    --border-light-2: #f0f1f7;
+    --background-gray-2: '#FCFDFE';
     --shadow-primary: 0 4px 12px 0 #3751ff3d;
   }
 }
@@ -38,12 +42,14 @@
   /* Background Colors */
   --color-bg-dark: var(--bg-dark);
   --color-bg-sidebar: var(--bg-sidebar);
+  --color-bg-light-gray-2: var(--background-gray-2);
 
   --color-text-gray: var(--text-gray);
   --color-text-dark: var(--text-dark);
   --color-text-muted: var(--text-muted);
 
   --color-border-light: var(--border-light);
+  --color-border-light-2: var(--border-light-2);
 
   /* Shadow Custom */
   --shadow-primary: var(--shadow-primary);
