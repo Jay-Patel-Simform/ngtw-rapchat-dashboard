@@ -3,15 +3,17 @@
     [routerLink]="href"
     [routerLinkActive]="'active'"
     [ariaCurrentWhenActive]="isActive ? 'page' : undefined"
-    class="flex h-full items-center gap-2 rounded-md px-4 py-2 text-gray-300 transition-colors duration-200 hover:bg-gray-800 hover:text-white">
-    <span class="flex items-center gap-6">
+    class="text-text-muted hover:bg-bg-dark flex h-full items-center gap-2 rounded-md px-4 py-2 transition-colors duration-200 hover:text-white">
+    <span class="flex items-center gap-4 sm:gap-6">
       <svg-icon
         [src]="icon"
-        [svgStyle]="{ path: { fill: isActive ? '#fff' : '#A4A6B3' } }" />
+        [svgStyle]="{
+          path: { fill: isActive ? 'white' : 'var(--color-text-muted)' },
+        }" />
 
       <span
-        class="font-(family-name:--font-mulish) text-[16px] leading-[100%] font-normal tracking-[0.2px] text-[#A4A6B3]"
-        [ngStyle]="{ color: isActive ? '#fff' : '#A4A6B3' }">
+        class="font-mulish text-base"
+        [ngStyle]="{ color: isActive ? 'white' : 'var(--color-text-muted)' }">
         {{ label }}
       </span>
     </span>
@@ -19,7 +21,7 @@
 
   @if (isActive) {
     <div
-      class="absolute top-0 left-0 h-full w-[3px] transform bg-[#DDE2FF] transition-all duration-300"
+      class="bg-bg-light-gray-3 absolute top-0 left-0 h-full w-[3px] transform transition-all duration-300"
       [ngClass]="{ 'scale-y-100': isActive, 'scale-y-0': !isActive }"></div>
   }
 </div>

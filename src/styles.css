@@ -14,6 +14,7 @@
     --border-light: rgba(223, 224, 235, 1);
     --border-light-2: #f0f1f7;
     --background-gray-2: '#FCFDFE';
+    --background-gray-3: #dde2ff;
     --shadow-primary: 0 4px 12px 0 #3751ff3d;
   }
 
@@ -27,6 +28,7 @@
     --border-light: rgba(223, 224, 235, 1);
     --border-light-2: #f0f1f7;
     --background-gray-2: '#FCFDFE';
+    --background-gray-3: #dde2ff;
     --shadow-primary: 0 4px 12px 0 #3751ff3d;
   }
 }
@@ -43,6 +45,7 @@
   --color-bg-dark: var(--bg-dark);
   --color-bg-sidebar: var(--bg-sidebar);
   --color-bg-light-gray-2: var(--background-gray-2);
+  --color-bg-light-gray-3: var(--background-gray-3);
 
   --color-text-gray: var(--text-gray);
   --color-text-dark: var(--text-dark);
