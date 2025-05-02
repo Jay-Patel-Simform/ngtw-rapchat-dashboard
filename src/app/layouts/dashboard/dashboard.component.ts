@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { SidebarComponent } from '../../components/molecules/sidebar/sidebar.component';
+import { NavbarComponent } from '../../components/molecules/navbar/navbar.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterOutlet, SidebarComponent],
+  imports: [RouterOutlet, SidebarComponent, NavbarComponent],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+  isSidebarOpen = signal(false);
+
+  toggleSidebar() {
+    this.isSidebarOpen.set(!this.isSidebarOpen());
+  }
+}

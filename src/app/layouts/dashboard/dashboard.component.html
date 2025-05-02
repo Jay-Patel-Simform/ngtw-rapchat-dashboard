@@ -1,4 +1,23 @@
-<div class="grid min-h-screen grid-cols-[255px_1fr]">
+<div class="min-h-screen overflow-hidden md:grid md:grid-cols-[255px_1fr]">
   <app-sidebar />
-  <router-outlet />
+
+  <div class="flex flex-1 flex-col overflow-hidden md:flex-row">
+    <app-navbar (toggleSidebar)="toggleSidebar()" />
+
+    <div id="main-content" class="flex-1 overflow-auto">
+      <router-outlet />
+    </div>
+  </div>
 </div>
+<!-- inside layout.component.html, outside md:grid -->
+<!-- <aside
+  class="bg-bg-sidebar fixed inset-y-0 left-0 z-50 w-[255px] transform transition-transform duration-300 md:hidden"
+  [class.-translate-x-full]="!isSidebarOpen()"
+  [class.translate-x-0]="isSidebarOpen()">
+  <app-sidebar />
+</aside> -->
+
+<app-sidebar
+  class="fixed inset-y-0 z-50 w-[255px] transform transition-transform duration-300 md:hidden"
+  [class.-translate-x-full]="!isSidebarOpen()"
+  [class.translate-x-0]="isSidebarOpen()" />

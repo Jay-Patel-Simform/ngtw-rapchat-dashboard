@@ -1,0 +1,22 @@
+<div class="relative">
+  <div class="mx-auto px-5 md:px-7.5">
+    <div class="flex items-center gap-4">
+      <!-- Mobile menu navigation button -->
+      <div class="sm:order-none md:hidden">
+        <button
+          type="button"
+          class="focus:ring-primary bg-primary inline-flex cursor-pointer items-center justify-center rounded-md p-2 focus:ring-2 focus:outline-hidden focus:ring-inset"
+          aria-expanded="false"
+          (click)="emitToggleSidebar()">
+          <span class="sr-only">Open Menu</span>
+          <svg-icon src="assets/icons/menu.svg" class="h-4 w-4" />
+        </button>
+      </div>
+      <!-- Page name with user menu -->
+      <div>
+        <h1 class="text-text-dark font-inter text-4xl">Users</h1>
+      </div>
+      <!-- Profile Menu -->
+    </div>
+  </div>
+</div>
