@@ -1,12 +1,12 @@
-<aside class="min-h-screen bg-[#161616]">
+<aside class="bg-bg-sidebar min-h-screen">
   <app-logo-with-text
-    class="flex items-center gap-6 ps-6 pt-10"
+    class="flex items-center gap-6 ps-6 pt-10 sm:gap-4"
     svgIconColorClass="invert" />
 
   <nav class="mt-12.5">
     <ul>
       @for (linkData of links; track linkData.label) {
-        <li class="mb-0 h-[56px]">
+        <li class="mb-2 h-14">
           <app-menu-link
             [href]="linkData.route"
             [label]="linkData.label"

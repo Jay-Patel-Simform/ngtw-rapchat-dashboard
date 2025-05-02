@@ -3,7 +3,7 @@
     [routerLink]="href"
     [routerLinkActive]="'active'"
     [ariaCurrentWhenActive]="isActive ? 'page' : undefined"
-    class="text-text-muted hover:bg-bg-dark flex h-full items-center gap-2 rounded-md px-4 py-2 transition-colors duration-200 hover:text-white">
+    class="text-text-muted hover:bg-bg-dark flex h-full items-center gap-2 rounded-md px-4 py-2 transition-colors duration-200">
     <span class="flex items-center gap-4 sm:gap-6">
       <svg-icon
         [src]="icon"
@@ -12,8 +12,8 @@
         }" />
 
       <span
-        class="font-mulish text-base"
-        [ngStyle]="{ color: isActive ? 'white' : 'var(--color-text-muted)' }">
+        class="font-mulish text-base group-hover:text-white"
+        [ngClass]="isActive ? 'text-bg-light-gray-3' : 'text-text-muted'">
         {{ label }}
       </span>
     </span>

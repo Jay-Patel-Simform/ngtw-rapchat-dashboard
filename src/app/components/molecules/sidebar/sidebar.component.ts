@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { LogoWithTextComponent } from '../../components/molecules/logo-with-text/logo-with-text.component';
-import { MenuLinkComponent } from '../../components/molecules/menu-link/menu-link.component';
+import { LogoWithTextComponent } from '../logo-with-text/logo-with-text.component';
+import { MenuLinkComponent } from '../menu-link/menu-link.component';
 
 @Component({
   selector: 'app-sidebar',
