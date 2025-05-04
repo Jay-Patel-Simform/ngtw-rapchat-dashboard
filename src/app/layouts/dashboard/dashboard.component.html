@@ -3,12 +3,13 @@
   <app-sidebar></app-sidebar>
 
   <!-- Main Page Content -->
-  <div class="flex grow flex-col content-start overflow-hidden">
+  <div
+    class="bg-bg-light-gray-4 flex grow flex-col content-start overflow-hidden">
     <!-- Header -->
     <app-navbar></app-navbar>
     <!-- Main Content -->
     <div id="main-content" class="grow overflow-auto">
-      <div class="mx-auto px-4 py-4 sm:px-8 lg:container">
+      <div class="mx-auto px-4 sm:px-8 lg:container">
         <router-outlet></router-outlet>
       </div>
     </div>

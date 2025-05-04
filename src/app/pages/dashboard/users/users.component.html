@@ -1,1 +1,27 @@
-<p>users works!</p>
+<div class="rounded-lg border border-[var(--color-border-light)] bg-white p-6">
+  <!-- Actions Div -->
+  <div class="flex items-center gap-6">
+    <p class="font-inter text-xl font-bold">Users</p>
+
+    <!-- Search Input -->
+    <div class="flex-1">
+      <app-input inputType="text" inputPlaceholder="Search" />
+    </div>
+
+    <!-- Dropdown Icon -->
+    <button
+      class="border-bg-light-gray-5 text-bg-light-gray-6 inline-flex w-[172px] cursor-pointer items-center justify-between rounded-md border px-4 py-2.5 text-sm font-semibold">
+      Actions
+      <span>
+        <svg-icon src="assets/icons/down-arrow.svg" />
+      </span>
+    </button>
+  </div>
+  <!-- Music Filter Buttons -->
+  <div
+    class="scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted my-10 overflow-x-auto">
+    <app-music-filter-buttons />
+  </div>
+
+  <app-users-table />
+</div>

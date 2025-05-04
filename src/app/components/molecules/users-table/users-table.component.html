@@ -1,0 +1,36 @@
+<div class="overflow-x-auto">
+  <table class="min-w-full table-auto text-left">
+    <!-- Table heading -->
+    <thead>
+      <tr>
+        <th class="px-4 py-2">User Name and Email</th>
+        <th class="px-4 py-2">Location</th>
+        <th class="px-4 py-2">Signup Date</th>
+        <th class="px-4 py-2">Fans</th>
+        <th class="px-4 py-2">Songs</th>
+      </tr>
+    </thead>
+    <!-- Table Body -->
+    @for (user of users; track user.email) {
+      <tr class="border-t">
+        <td class="flex items-center space-x-3 px-4 py-2">
+          <img [alt]="user.email" [src]="user.avatar" />
+
+          <div>
+            <p class="font-semibold">{{ user.name }}</p>
+            <p class="text-sm text-gray-500">{{ user.city }}</p>
+          </div>
+        </td>
+
+        <td class="px-4 py-2">
+          <p class="font-semibold">{{ user.country }}</p>
+          <p class="text-sm text-gray-500">{{ user.city }}</p>
+        </td>
+
+        <td class="px-4 py-2">{{ user.signup }}</td>
+        <td class="px-4 py-2">{{ user.fans }}</td>
+        <td class="px-4 py-2">{{ user.songs }} Songs</td>
+      </tr>
+    }
+  </table>
+</div>
