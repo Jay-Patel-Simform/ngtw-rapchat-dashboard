@@ -8,18 +8,32 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   // button props
-  @Input() variant: 'primary' | 'secondary' = 'primary';
+  @Input() variant: 'default' | 'outlined' = 'default';
   @Input() buttonType: HTMLButtonElement['type'] = 'button';
+  @Input() buttonSize: 'default' | 'sm' | 'lg' | 'icon' | 'xxl' = 'default';
+  @Input() disabled: boolean = false;
+  @Input() class: string = '';
 
   get buttonClasses() {
     const baseClasses =
-      'h-12 rounded-lg text-center text-sm font-semibold cursor-pointer text-white transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 w-full shadow-primary tracking-[0.2px]';
+      'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none  focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50';
 
     const variantClasses = {
-      primary: 'bg-primary hover:bg-primary/80 focus:ring-primary',
-      secondary: 'bg-gray-500',
+      default:
+        'bg-primary text-primary-foreground shadow  hover:bg-primary/90 focus:ring-primary',
+
+      outlined:
+        'border border-border-light  bg-background  hover:bg-secondary/80',
     }[this.variant];
 
-    return `${baseClasses} ${variantClasses}`;
+    const sizesClasses = {
+      default: 'h-9 px-4 py-2',
+      sm: 'h-8 rounded-md px-3 text-xs',
+      lg: 'h-10 rounded-md px-8',
+      icon: 'h-9 w-9',
+      xxl: 'h-12 w-12',
+    }[this.buttonSize];
+
+    return `${baseClasses} ${variantClasses} ${sizesClasses}`;
   }
 }
