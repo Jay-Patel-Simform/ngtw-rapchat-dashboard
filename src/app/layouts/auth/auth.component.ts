@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-auth',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
+  templateUrl: './auth.component.html',
 })
-export class AppComponent {
-  title = 'Angular Tailwind';
-}
+export class AuthComponent {}
