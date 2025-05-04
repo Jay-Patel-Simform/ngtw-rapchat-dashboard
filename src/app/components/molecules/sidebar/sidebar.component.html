@@ -1,4 +1,5 @@
-<aside class="bg-bg-sidebar hidden min-h-screen md:block">
+<aside
+  class="bg-bg-sidebar hidden h-full w-[255px] flex-col transition-all duration-300 md:flex">
   <app-logo-with-text
     class="flex items-center gap-6 ps-6 pt-10 sm:gap-4"
     svgIconColorClass="invert" />
@@ -16,4 +17,12 @@
       }
     </ul>
   </nav>
+
+  <hr class="bg-border-light mt-10 h-[2px]" />
+  <div class="mt-4 h-14">
+    <app-menu-link
+      href="/settings"
+      label="Settings"
+      [icon]="'assets/icons/settings.svg'" />
+  </div>
 </aside>
