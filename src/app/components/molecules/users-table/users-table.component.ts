@@ -1,11 +1,21 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
   selector: 'app-users-table',
-  imports: [],
+  imports: [AngularSvgIconModule, CommonModule],
   templateUrl: './users-table.component.html',
 })
 export class UsersTableComponent {
+  tableHeadings = [
+    { id: 1, title: 'User Name and Email' },
+    { id: 2, title: 'Location' },
+    { id: 3, title: 'Signup Date' },
+    { id: 4, title: 'Fans' },
+    { id: 5, title: 'Songs' },
+  ];
+
   users = [
     {
       name: 'Seth Mills',
@@ -15,7 +25,7 @@ export class UsersTableComponent {
       signup: '27 Dec, 2019',
       fans: '169.3K',
       songs: 186,
-      avatar: 'https://via.placeholder.com/32',
+      avatar: 'assets/user-avatar.png',
     },
     {
       name: 'Abram Workman',
@@ -25,7 +35,7 @@ export class UsersTableComponent {
       signup: '04 Apr, 2016',
       fans: '1.3M',
       songs: 629,
-      avatar: 'https://via.placeholder.com/32',
+      avatar: 'assets/user-avatar.png',
     },
     {
       name: 'Alfonso',
@@ -35,7 +45,7 @@ export class UsersTableComponent {
       signup: '14 Jun, 2020',
       fans: '537.7K',
       songs: 518,
-      avatar: 'https://via.placeholder.com/32',
+      avatar: 'assets/user-avatar.png',
     },
     {
       name: 'Ann Schleffer',
@@ -45,7 +55,7 @@ export class UsersTableComponent {
       signup: '1 Feb, 2019',
       fans: '531.3K',
       songs: 61,
-      avatar: 'https://via.placeholder.com/32',
+      avatar: 'assets/user-avatar.png',
     },
     {
       name: 'Jocelyn Bergson',
@@ -55,7 +65,7 @@ export class UsersTableComponent {
       signup: '19 Sep, 2018',
       fans: '816.2K',
       songs: 79,
-      avatar: 'https://via.placeholder.com/32',
+      avatar: 'assets/user-avatar.png',
     },
     {
       name: 'Desirae',
@@ -65,7 +75,7 @@ export class UsersTableComponent {
       signup: '27 Nov, 2015',
       fans: '638.9K',
       songs: 515,
-      avatar: 'https://via.placeholder.com/32',
+      avatar: 'assets/user-avatar.png',
     },
     {
       name: 'Martin Ekstrom Bothman',
@@ -75,7 +85,7 @@ export class UsersTableComponent {
       signup: '03 Oct, 2016',
       fans: '2.3M',
       songs: 716,
-      avatar: 'https://via.placeholder.com/32',
+      avatar: 'assets/user-avatar.png',
     },
     {
       name: 'Wilson Vaccaro',
@@ -85,7 +95,7 @@ export class UsersTableComponent {
       signup: '14 Sep, 2018',
       fans: '825.1K',
       songs: 372,
-      avatar: 'https://via.placeholder.com/32',
+      avatar: 'assets/user-avatar.png',
     },
   ];
 }

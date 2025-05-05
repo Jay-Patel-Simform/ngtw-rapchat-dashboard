@@ -7,12 +7,14 @@
   :root {
     --bg-dark: #0b0b0b;
     --bg-sidebar: #161616;
+    --bg-sidebar-2: #363740;
     --text-gray: #a4a6b3;
     --text-dark: #313235;
     --text-muted: #4b506d;
     --custom-primary: rgba(55, 81, 255, 1);
     --border-light: rgba(223, 224, 235, 1);
     --border-light-2: #f0f1f7;
+    --border-light-3: #9b9b9b;
     --background-gray-2: #fcfdfe;
     --background-gray-3: #dde2ff;
     --background-gray-4: #f7f8fc;
@@ -24,12 +26,14 @@
   .dark {
     --bg-dark: #0b0b0b;
     --bg-sidebar: #161616;
+    --bg-sidebar-2: #363740;
     --text-gray: #a4a6b3;
     --text-dark: #313235;
     --text-muted: #4b506d;
     --custom-primary: rgba(55, 81, 255, 1);
     --border-light: rgba(223, 224, 235, 1);
     --border-light-2: #f0f1f7;
+    --border-light-3: #9b9b9b;
     --background-gray-2: #fcfdfe;
     --background-gray-3: #dde2ff;
     --background-gray-4: #f7f8fc;
@@ -50,6 +54,7 @@
   /* Background Colors */
   --color-bg-dark: var(--bg-dark);
   --color-bg-sidebar: var(--bg-sidebar);
+  --color-bg-sidebar-2: var(--bg-sidebar-2);
   --color-bg-light-gray-2: var(--background-gray-2);
   --color-bg-light-gray-3: var(--background-gray-3);
   --color-bg-light-gray-4: var(--background-gray-4);
@@ -62,7 +67,7 @@
 
   --color-border-light: var(--border-light);
   --color-border-light-2: var(--border-light-2);
-
+  --color-border-light-3: var(--border-light-3);
   /* Shadow Custom */
   --shadow-primary: var(--shadow-primary);
 }

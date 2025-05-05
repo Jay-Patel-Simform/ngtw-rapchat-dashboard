@@ -1,36 +1,81 @@
-<div class="overflow-x-auto">
-  <table class="min-w-full table-auto text-left">
-    <!-- Table heading -->
-    <thead>
-      <tr>
-        <th class="px-4 py-2">User Name and Email</th>
-        <th class="px-4 py-2">Location</th>
-        <th class="px-4 py-2">Signup Date</th>
-        <th class="px-4 py-2">Fans</th>
-        <th class="px-4 py-2">Songs</th>
-      </tr>
-    </thead>
-    <!-- Table Body -->
-    @for (user of users; track user.email) {
-      <tr class="border-t">
-        <td class="flex items-center space-x-3 px-4 py-2">
-          <img [alt]="user.email" [src]="user.avatar" />
+<!-- Responsive Table Container -->
+<div class="w-full overflow-hidden">
+  <!-- Scrollable container for small -->
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-left rtl:text-right">
+      <!-- Table heading -->
+      <thead>
+        <tr>
+          @for (heading of tableHeadings; track heading.id) {
+            <th
+              class="font-inter text-bg-light-gray-6 px-3 py-3 text-sm font-bold whitespace-nowrap uppercase"
+              [ngClass]="{
+                'min-w-[220px]': heading.title === 'User Name and Email',
+              }"
+              scope="col">
+              {{ heading.title }}
+            </th>
+          }
+          <th
+            class="font-inter text-bg-light-gray-6 w-10 px-3 py-3 text-sm font-bold whitespace-nowrap uppercase"
+            scope="col"></th>
+        </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody>
+        @for (user of users; track user.email) {
+          <tr
+            class="border-t-border-light-3 border-t-[0.4px] transition hover:bg-gray-50">
+            <td class="px-3 py-4">
+              <div class="flex items-center gap-4">
+                <img
+                  [alt]="user.email"
+                  [src]="user.avatar"
+                  class="h-10 w-10 shrink-0 rounded-full object-cover" />
 
-          <div>
-            <p class="font-semibold">{{ user.name }}</p>
-            <p class="text-sm text-gray-500">{{ user.city }}</p>
-          </div>
-        </td>
+                <div class="min-w-0">
+                  <p
+                    class="text-text-dark font-inter max-w-[180px] truncate text-sm font-semibold">
+                    {{ user.name }}
+                  </p>
+                  <p
+                    class="font-mulish text-bg-light-gray-5 max-w-[180px] truncate text-xs font-normal">
+                    {{ user.email }}
+                  </p>
+                </div>
+              </div>
+            </td>
 
-        <td class="px-4 py-2">
-          <p class="font-semibold">{{ user.country }}</p>
-          <p class="text-sm text-gray-500">{{ user.city }}</p>
-        </td>
+            <td class="px-3 py-4 whitespace-nowrap">
+              <p class="text-text-dark font-inter text-sm font-semibold">
+                {{ user.country }}
+              </p>
+              <p class="font-mulish text-bg-light-gray-5 text-xs font-normal">
+                {{ user.city }}
+              </p>
+            </td>
 
-        <td class="px-4 py-2">{{ user.signup }}</td>
-        <td class="px-4 py-2">{{ user.fans }}</td>
-        <td class="px-4 py-2">{{ user.songs }} Songs</td>
-      </tr>
-    }
-  </table>
+            <td
+              class="text-text-dark font-inter px-3 py-4 text-xs font-semibold whitespace-nowrap">
+              {{ user.signup }}
+            </td>
+            <td
+              class="text-text-dark font-inter py-4 text-sm font-semibold whitespace-nowrap">
+              {{ user.fans }}
+            </td>
+            <td
+              class="text-color-bg-sidebar-2 font-inter py-4 text-sm font-semibold whitespace-nowrap">
+              {{ user.songs }} Songs
+            </td>
+
+            <td class="px-3 py-4 text-right whitespace-nowrap">
+              <button class="cursor-pointer px-3 py-3 hover:bg-gray-700">
+                <svg-icon src="assets/icons/vertical-3-dot.svg" />
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>
