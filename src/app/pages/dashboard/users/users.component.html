@@ -1,16 +1,21 @@
 <div class="rounded-lg border border-[var(--color-border-light)] bg-white p-6">
   <!-- Actions Div -->
-  <div class="flex items-center gap-6">
+  <div
+    class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
     <p class="font-inter text-xl font-bold">Users</p>
 
     <!-- Search Input -->
-    <div class="flex-1">
-      <app-input inputType="text" inputPlaceholder="Search" />
+    <div class="w-full flex-1">
+      <app-input
+        inputType="text"
+        inputPlaceholder="Search"
+        [icon]="'assets/icons/search.svg'"
+        iconPosition="start" />
     </div>
 
     <!-- Dropdown Icon -->
     <button
-      class="border-bg-light-gray-5 text-bg-light-gray-6 inline-flex w-[172px] cursor-pointer items-center justify-between rounded-md border px-4 py-2.5 text-sm font-semibold">
+      class="border-bg-light-gray-5 text-bg-light-gray-6 inline-flex w-full cursor-pointer items-center justify-between rounded-md border px-4 py-2.5 text-sm font-semibold sm:w-[172px]">
       Actions
       <span>
         <svg-icon src="assets/icons/down-arrow.svg" />
