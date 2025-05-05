@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { AngularSvgIconModule } from 'angular-svg-icon';
+
+import { SidebarService } from '../../../services/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +10,5 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  @Output() toggleSidebar = new EventEmitter<void>();
-
-  emitToggleSidebar() {
-    console.log('Click on button');
-    this.toggleSidebar.emit();
-  }
+  sidebarService = inject(SidebarService);
 }

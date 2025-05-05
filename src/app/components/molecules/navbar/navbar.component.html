@@ -6,9 +6,14 @@
         <button
           class="bg-muted text-muted-foreground focus:ring-primary hover:bg-muted-foreground hover:text-muted inline-flex cursor-pointer items-center justify-center rounded-md p-2 hover:bg-gray-300/10 focus:ring-2 focus:outline-hidden focus:ring-inset"
           type="button"
-          aria-expanded="false">
-          <span class="sr-only">Open Menu</span>
-          <svg-icon src="assets/icons/menu.svg" [svgClass]="'h-4 w-4'" />
+          [attr.aria-expanded]="sidebarService.isSidebarOpen()"
+          (click)="$event.stopPropagation(); sidebarService.toggleSidebar()">
+          <span class="sr-only">
+            {{
+              sidebarService.isSidebarOpen() ? 'Close Menu' : 'Open Menu'
+            }}</span
+          >
+          <svg-icon [src]="'assets/icons/menu.svg'" [svgClass]="'h-4 w-4'" />
         </button>
       </div>
 

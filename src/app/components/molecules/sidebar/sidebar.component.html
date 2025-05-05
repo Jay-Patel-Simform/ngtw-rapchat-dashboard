@@ -1,5 +1,28 @@
+@if (sidebarService.isSidebarOpen()) {
+  <div
+    class="fixed inset-0 z-40 bg-black/50 transition-opacity duration-300 md:hidden"></div>
+}
+
 <aside
-  class="bg-bg-sidebar hidden h-full w-[255px] flex-col transition-all duration-300 md:flex">
+  [class.md:flex]="true"
+  [class.flex]="sidebarService.isSidebarOpen()"
+  [class.hidden]="!sidebarService.isSidebarOpen()"
+  [class.translate-x-0]="sidebarService.isSidebarOpen()"
+  [class.translate-x-[-100%]]="!sidebarService.isSidebarOpen()"
+  [class.md:translate-x-0]="true"
+  class="bg-bg-sidebar hidden h-full w-[255px] flex-col shadow-lg transition-transform duration-300"
+  [class.fixed]="sidebarService.isSidebarOpen()"
+  [class.z-[50]]="sidebarService.isSidebarOpen()">
+  <button
+    (click)="sidebarService.closeSidebar()"
+    type="button"
+    class="absolute top-2 right-2 block md:hidden">
+    <svg-icon
+      src="assets/icons/close.svg"
+      [svgClass]="'bg-white cursor-pointer'" />
+  </button>
+
+  <!-- App Logo -->
   <app-logo-with-text
     class="flex items-center gap-6 ps-6 pt-10 sm:gap-4"
     svgIconColorClass="invert" />
