@@ -15,6 +15,8 @@ export class InputComponent {
   @Input() isPassword: boolean = false;
   @Input() label: string = '';
   @Input() inputId: string = '';
+  @Input() icon?: string;
+  @Input() iconPosition?: 'start' | 'end' = 'start';
 
   // state
   showPassword: boolean = false;
