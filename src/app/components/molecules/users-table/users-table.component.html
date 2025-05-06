@@ -8,7 +8,7 @@
         <tr>
           @for (heading of tableHeadings; track heading.id) {
             <th
-              class="font-inter text-bg-light-gray-6 px-3 py-3 text-sm font-bold whitespace-nowrap uppercase"
+              class="font-inter text-background-senary px-3 py-3 text-sm font-bold whitespace-nowrap uppercase"
               [ngClass]="{
                 'min-w-[220px]': heading.title === 'User Name and Email',
               }"
@@ -17,7 +17,7 @@
             </th>
           }
           <th
-            class="font-inter text-bg-light-gray-6 w-10 px-3 py-3 text-sm font-bold whitespace-nowrap uppercase"
+            class="font-inter text-background-senary w-10 px-3 py-3 text-sm font-bold whitespace-nowrap uppercase"
             scope="col"></th>
         </tr>
       </thead>
@@ -25,7 +25,7 @@
       <tbody>
         @for (user of users; track user.email) {
           <tr
-            class="border-t-border-light-3 border-t-[0.4px] transition hover:bg-gray-50">
+            class="border-t-border-tertiary border-t-[0.4px] transition hover:bg-gray-300/80">
             <td class="px-3 py-4">
               <div class="flex items-center gap-4">
                 <img
@@ -35,11 +35,11 @@
 
                 <div class="min-w-0">
                   <p
-                    class="text-text-dark font-inter max-w-[180px] truncate text-sm font-semibold">
+                    class="text-text-primary font-inter max-w-[180px] truncate text-sm font-semibold">
                     {{ user.name }}
                   </p>
                   <p
-                    class="font-mulish text-bg-light-gray-5 max-w-[180px] truncate text-xs font-normal">
+                    class="font-mulish text-background-quinary max-w-[180px] truncate text-xs font-normal">
                     {{ user.email }}
                   </p>
                 </div>
@@ -47,24 +47,25 @@
             </td>
 
             <td class="px-3 py-4 whitespace-nowrap">
-              <p class="text-text-dark font-inter text-sm font-semibold">
+              <p class="text-text-primary font-inter text-sm font-semibold">
                 {{ user.country }}
               </p>
-              <p class="font-mulish text-bg-light-gray-5 text-xs font-normal">
+              <p
+                class="font-mulish text-background-quinary text-xs font-normal">
                 {{ user.city }}
               </p>
             </td>
 
             <td
-              class="text-text-dark font-inter px-3 py-4 text-xs font-semibold whitespace-nowrap">
+              class="text-text-primary font-inter px-3 py-4 text-xs font-semibold whitespace-nowrap">
               {{ user.signup }}
             </td>
             <td
-              class="text-text-dark font-inter px-3 py-4 text-sm font-semibold whitespace-nowrap">
+              class="text-text-primary font-inter px-3 py-4 text-sm font-semibold whitespace-nowrap">
               {{ user.fans }}
             </td>
             <td
-              class="text-color-bg-sidebar-2 font-inter px-3 py-4 text-sm font-semibold whitespace-nowrap">
+              class="font-inter px-3 py-4 text-sm font-semibold whitespace-nowrap text-[#363740] dark:text-white">
               {{ user.songs }} Songs
             </td>
 
