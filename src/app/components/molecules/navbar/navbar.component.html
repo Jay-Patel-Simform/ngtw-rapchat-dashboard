@@ -4,7 +4,7 @@
       <!-- Mobile Navigation button -->
       <div class="md:hidden">
         <button
-          class="bg-muted text-muted-foreground focus:ring-primary hover:bg-muted-foreground hover:text-muted inline-flex cursor-pointer items-center justify-center rounded-md p-2 hover:bg-gray-300/10 focus:ring-2 focus:outline-hidden focus:ring-inset"
+          class="bg-text-secondary focus:ring-primary hover:bg-text-secondary/50 inline-flex cursor-pointer items-center justify-center rounded-md p-2 focus:ring-2 focus:outline-hidden focus:ring-inset"
           type="button"
           [attr.aria-expanded]="sidebarService.isSidebarOpen()"
           (click)="$event.stopPropagation(); sidebarService.toggleSidebar()">
@@ -13,20 +13,22 @@
               sidebarService.isSidebarOpen() ? 'Close Menu' : 'Open Menu'
             }}</span
           >
-          <svg-icon [src]="'assets/icons/menu.svg'" [svgClass]="'h-4 w-4'" />
+          <svg-icon
+            [src]="'assets/icons/menu.svg'"
+            [svgClass]="'h-4 w-4'"
+            [svgStyle]="{ color: 'white' }" />
         </button>
       </div>
 
       <div class="flex flex-1 items-center justify-between ps-2">
-        <h1 class="font-inter text-4xl font-bold">Users</h1>
+        <h1 class="font-inter text-text-primary text-4xl font-bold">Users</h1>
 
         <div class="flex items-center gap-3">
-          <p class="font-inter text-text-dark text-sm font-semibold">
+          <p class="font-inter text-text-primary text-sm font-semibold">
             Seth Mills
           </p>
 
-          <div
-            class="rounded-full border-[1.5px] border-[var(--color-border-light)]">
+          <div class="border-border-primary rounded-full border-[1.5px]">
             <img
               src="assets/profile-pic.jpg"
               alt="user profile"
