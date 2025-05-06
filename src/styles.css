@@ -5,41 +5,43 @@
 
 @layer base {
   :root {
-    --bg-dark: #0b0b0b;
-    --bg-sidebar: #161616;
-    --bg-sidebar-2: #363740;
-    --text-gray: #a4a6b3;
-    --text-dark: #313235;
-    --text-muted: #4b506d;
-    --custom-primary: rgba(55, 81, 255, 1);
-    --border-light: rgba(223, 224, 235, 1);
-    --border-light-2: #f0f1f7;
-    --border-light-3: #9b9b9b;
-    --background-gray-2: #fcfdfe;
-    --background-gray-3: #dde2ff;
-    --background-gray-4: #f7f8fc;
-    --background-gray-5: #c5c7cd;
-    --background-gray-6: #9fa2b4;
+    /* Light theme colors */
+    --background-primary: #fcfdfe;
+    --background-dark: #0b0b0b; /* Used in login page for light theme */
+    --background-sidebar: #ffffff;
+    --background-sidebar-secondary: #f0f1f7;
+    --background-tertiary: #dde2ff;
+    --background-quaternary: #f7f8fc;
+    --background-quinary: #c5c7cd;
+    --background-senary: #9fa2b4;
+    --text-primary: #313235;
+    --text-secondary: #4b506d;
+    --text-tertiary: #a4a6b3;
+    --border-primary: #dfe0eb;
+    --border-secondary: #f0f1f7;
+    --border-tertiary: #9b9b9b;
+    --accent-primary: #3751ff;
     --shadow-primary: 0 4px 12px 0 #3751ff3d;
   }
 
   .dark {
-    --bg-dark: #0b0b0b;
-    --bg-sidebar: #161616;
-    --bg-sidebar-2: #363740;
-    --text-gray: #a4a6b3;
-    --text-dark: #313235;
-    --text-muted: #4b506d;
-    --custom-primary: rgba(55, 81, 255, 1);
-    --border-light: rgba(223, 224, 235, 1);
-    --border-light-2: #f0f1f7;
-    --border-light-3: #9b9b9b;
-    --background-gray-2: #fcfdfe;
-    --background-gray-3: #dde2ff;
-    --background-gray-4: #f7f8fc;
-    --background-gray-5: #c5c7cd;
-    --background-gray-6: #9fa2b4;
-    --shadow-primary: 0 4px 12px 0 #3751ff3d;
+    /* Dark theme colors */
+    --background-primary: #161616;
+    --background-dark: #0b0b0b; /* Remains dark in dark theme */
+    --background-sidebar: #161616;
+    --background-sidebar-secondary: #363740;
+    --background-tertiary: #2d2d2d;
+    --background-quaternary: #252526;
+    --background-quinary: #3f3f46;
+    --background-senary: #4b5563;
+    --text-primary: #ffffff;
+    --text-secondary: #a4a6b3;
+    --text-tertiary: #6b7280;
+    --border-primary: #374151;
+    --border-secondary: #4b5563;
+    --border-tertiary: #6b7280;
+    --accent-primary: #60a5fa;
+    --shadow-primary: 0 4px 12px 0 #60a5fa3d;
   }
 }
 
@@ -47,27 +49,31 @@
   /* Fonts */
   --font-inter: 'Inter', sans-serif;
   --font-mulish: 'Mulish', sans-serif;
+
   /* Colors */
-  --color-primary: var(--custom-primary);
-  --color-primary-foreground: #fff;
+  --color-primary: var(--accent-primary);
+  --color-primary-foreground: #ffffff;
 
   /* Background Colors */
-  --color-bg-dark: var(--bg-dark);
-  --color-bg-sidebar: var(--bg-sidebar);
-  --color-bg-sidebar-2: var(--bg-sidebar-2);
-  --color-bg-light-gray-2: var(--background-gray-2);
-  --color-bg-light-gray-3: var(--background-gray-3);
-  --color-bg-light-gray-4: var(--background-gray-4);
-  --color-bg-light-gray-5: var(--background-gray-5);
-  --color-bg-light-gray-6: var(--background-gray-6);
+  --color-background-primary: var(--background-primary);
+  --color-background-dark: var(--background-dark);
+  --color-background-sidebar: var(--background-sidebar);
+  --color-background-sidebar-secondary: var(--background-sidebar-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  --color-background-quaternary: var(--background-quaternary);
+  --color-background-quinary: var(--background-quinary);
+  --color-background-senary: var(--background-senary);
 
-  --color-text-gray: var(--text-gray);
-  --color-text-dark: var(--text-dark);
-  --color-text-muted: var(--text-muted);
+  /* Text Colors */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
 
-  --color-border-light: var(--border-light);
-  --color-border-light-2: var(--border-light-2);
-  --color-border-light-3: var(--border-light-3);
-  /* Shadow Custom */
-  --shadow-primary: var(--shadow-primary);
+  /* Border Colors */
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-tertiary: var(--border-tertiary);
+
+  /* Shadow */
+  --color-shadow-primary: var(--shadow-primary);
 }

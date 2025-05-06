@@ -2,7 +2,7 @@
   @if (label) {
     <label
       [attr.for]="inputId"
-      class="font-inter text-text-muted text-xs font-bold uppercase"
+      class="font-inter text-text-secondary text-xs font-bold uppercase"
       >{{ label }}</label
     >
   }
@@ -15,7 +15,7 @@
     }
 
     <input
-      class="placehoder:text-text-muted bg-bg-light-gray-2 placeholder:font-mulish h-[42px] w-full rounded-lg border border-[var(--border-light-2)] py-2 ps-4 placeholder:text-sm placeholder:font-normal placeholder:opacity-40"
+      class="placehoder:text-text-secondary bg-background-primary placeholder:font-mulish border-border-secondary h-[42px] w-full rounded-lg border py-2 ps-4 placeholder:text-sm placeholder:font-normal placeholder:opacity-40 dark:text-white dark:placeholder:text-white"
       [class.ps-10]="icon && iconPosition === 'start'"
       [class.pe-10]="(icon && iconPosition === 'end') || isPassword"
       [type]="getInputType()"
@@ -36,7 +36,7 @@
       </button>
     } @else if (icon && iconPosition === 'end') {
       <span class="absolute inset-y-0 end-3 flex items-center">
-        <svg-icon [src]="icon" class="text-text-muted h-4 w-4" />
+        <svg-icon [src]="icon" class="text-text-secondary h-4 w-4" />
       </span>
     }
   </div>
