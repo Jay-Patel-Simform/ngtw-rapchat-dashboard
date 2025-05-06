@@ -1,33 +1,65 @@
 {
     "pipes": [],
-    "interfaces": [
+    "interfaces": [],
+    "injectables": [
         {
-            "name": "User",
-            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
-            "file": "src/stories/user.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface User {\n  name: string;\n}\n",
+            "name": "SidebarService",
+            "id": "injectable-SidebarService-4c52791cba4289ef4b14f704ead442633d3814ac8997e9c54afb293ea0cc67b4bd03ce3e4892b2a1d1fa45e19ebe3837ca91a1f34a425a1fbe6ae5960f78c08b",
+            "file": "src/app/services/sidebar/sidebar.service.ts",
             "properties": [
                 {
-                    "name": "name",
+                    "name": "isSidebarOpen",
+                    "defaultValue": "signal(false)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
+                    "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 2
+                    "line": 7
                 }
             ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
+            "methods": [
+                {
+                    "name": "closeSidebar",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openSidebar",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleSidebar",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 9,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable, signal } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class SidebarService {\n  isSidebarOpen = signal(false);\n\n  toggleSidebar() {\n    this.isSidebarOpen.update(val => !val);\n  }\n\n  openSidebar() {\n    this.isSidebarOpen.set(true);\n  }\n\n  closeSidebar() {\n    this.isSidebarOpen.set(false);\n  }\n}\n",
+            "extends": [],
+            "type": "injectable"
         }
     ],
-    "injectables": [],
     "guards": [],
     "interceptors": [],
     "classes": [],
@@ -35,7 +67,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-182e0754f947dc7faf4c7998ffcc0095be4ff98620fd33ce02d59b66b17157dcc50ce5d9b2eff4c1cbc9520ff4ef557f36c3f0666d1085350fd4248d47732ba6",
+            "id": "component-AppComponent-797fcaf28b165a18f330e41e85a7ae2db5ffa3e11e1c0dfbbf8c37e9d089c32753add0406cd1b99dac3e44824606d638d29245eea0eab550cb9fb0d868e564b7",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -55,7 +87,7 @@
             "propertiesClass": [
                 {
                     "name": "title",
-                    "defaultValue": "'angular-project-tailwind'",
+                    "defaultValue": "'Angular Tailwind'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -79,7 +111,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-root',\n  imports: [RouterOutlet],\n  templateUrl: './app.component.html',\n})\nexport class AppComponent {\n  title = 'angular-project-tailwind';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-root',\n  imports: [RouterOutlet],\n  templateUrl: './app.component.html',\n})\nexport class AppComponent {\n  title = 'Angular Tailwind';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -87,108 +119,118 @@
             "templateData": "<router-outlet />"
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-d7bf0323e6da130e2609e2af0117b4a8d7cd874132206af50bf43dfc37044485fe50f2867ea76525730dd195b9b95a43802a12dadc6ad5cd7bf2faa07f19f0da",
-            "file": "src/stories/button.component.ts",
+            "name": "AuthComponent",
+            "id": "component-AuthComponent-f2e90c73c15742cc81f67d3af63d862b7856f482af54f20f22dca0a8b180558d09652c158019e82527980487622e1709219f9be364c3b6a16eb6365c4c45a76b",
+            "file": "src/app/layouts/auth/auth.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "storybook-button",
-            "styleUrls": [
-                "./button.css"
-            ],
+            "selector": "app-auth",
+            "styleUrls": [],
             "styles": [],
-            "template": " <button  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>",
-            "templateUrl": [],
+            "templateUrl": [
+                "./auth.component.html"
+            ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "backgroundColor",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nWhat background color to use",
-                    "description": "<p>What background color to use</p>\n",
-                    "line": 25,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'Button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "pos": 760,
-                            "end": 773,
-                            "kind": 327,
-                            "id": 0,
-                            "flags": 16842752,
-                            "modifierFlagsCache": 0,
-                            "transformFlags": 0,
-                            "tagName": {
-                                "pos": 761,
-                                "end": 769,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "required"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "rawdescription": "\n\nButton contents\n\n",
-                    "description": "<p>Button contents</p>\n",
-                    "line": 37,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "primary",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nIs this the principal call to action on the page?",
-                    "description": "<p>Is this the principal call to action on the page?</p>\n",
-                    "line": 21,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'medium'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nHow large should the button be?",
-                    "description": "<p>How large should the button be?</p>\n",
-                    "line": 29,
-                    "type": "\"small\" | \"medium\" | \"large\"",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onClick",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nOptional click handler",
-                    "description": "<p>Optional click handler</p>\n",
-                    "line": 41,
-                    "type": "EventEmitter"
-                }
-            ],
+            "inputsClass": [],
+            "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-auth',\n  imports: [RouterOutlet],\n  templateUrl: './auth.component.html',\n})\nexport class AuthComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<main\n  class=\"bg-bg-dark container mx-auto flex min-h-dvh max-w-full items-center justify-center px-2\">\n  <ng-content></ng-content>\n</main>\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-8177e48967341480768df4c71041c7e0425a70ead17002f294d0a34de05c3b8dfd889e887dfe2e9e6b2e1a9847c0432ddbee07264ff2cb41e1ca70c5157cb188",
+            "file": "src/app/components/atoms/button/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-button",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "buttonSize",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "\"default\" | \"sm\" | \"lg\" | \"icon\" | \"xxl\"",
+                    "decorators": []
+                },
+                {
+                    "name": "buttonType",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "HTMLButtonElement",
+                    "decorators": []
+                },
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "\"default\" | \"outlined\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
             "imports": [
                 {
                     "name": "CommonModule",
@@ -198,85 +240,239 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /** Is this the principal call to action on the page? */\n  @Input()\n  primary = false;\n\n  /** What background color to use */\n  @Input()\n  backgroundColor?: string;\n\n  /** How large should the button be? */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /** Optional click handler */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  imports: [CommonModule],\n})\nexport class ButtonComponent {\n  // button props\n  @Input() variant: 'default' | 'outlined' = 'default';\n  @Input() buttonType: HTMLButtonElement['type'] = 'button';\n  @Input() buttonSize: 'default' | 'sm' | 'lg' | 'icon' | 'xxl' = 'default';\n  @Input() disabled: boolean = false;\n  @Input() class: string = '';\n\n  get buttonClasses() {\n    const baseClasses =\n      'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed';\n\n    const variantClasses = {\n      default:\n        'bg-primary text-primary-foreground shadow  hover:bg-primary/90 focus:ring-primary',\n\n      outlined:\n        'border border-border-light  bg-background  hover:bg-secondary/80',\n    }[this.variant];\n\n    const sizesClasses = {\n      default: 'h-9 px-4 py-2',\n      sm: 'h-8 rounded-md px-3 text-xs',\n      lg: 'h-10 rounded-md px-8',\n      icon: 'h-9 w-9',\n      xxl: 'h-12 w-12',\n    }[this.buttonSize];\n\n    return `${baseClasses} ${variantClasses} ${sizesClasses}`;\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-button {\n  display: inline-block;\n  cursor: pointer;\n  border: 0;\n  border-radius: 3em;\n  font-weight: 700;\n  line-height: 1;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n.storybook-button--primary {\n  background-color: #555ab9;\n  color: white;\n}\n.storybook-button--secondary {\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n  background-color: transparent;\n  color: #333;\n}\n.storybook-button--small {\n  padding: 10px 16px;\n  font-size: 12px;\n}\n.storybook-button--medium {\n  padding: 11px 20px;\n  font-size: 14px;\n}\n.storybook-button--large {\n  padding: 12px 24px;\n  font-size: 16px;\n}\n",
-                    "styleUrl": "./button.css"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
             "accessors": {
-                "classes": {
-                    "name": "classes",
+                "buttonClasses": {
+                    "name": "buttonClasses",
                     "getSignature": {
-                        "name": "classes",
-                        "type": "[]",
-                        "returnType": "string[]",
-                        "line": 43
+                        "name": "buttonClasses",
+                        "type": "",
+                        "returnType": "",
+                        "line": 17
                     }
                 }
-            }
+            },
+            "templateData": "<button [type]=\"buttonType\" [ngClass]=\"[buttonClasses, class]\">\n  <ng-content></ng-content>\n</button>\n"
         },
         {
-            "name": "HeaderComponent",
-            "id": "component-HeaderComponent-48b9abe37706bc42f20cfa97ed9f943678344ea7d254c0c82183c657750c2191b43486fe730c778627b2ea6aa0e2f33a7abcf3ce08b68ad18b062ad99ea97acb",
-            "file": "src/stories/header.component.ts",
+            "name": "CardComponent",
+            "id": "component-CardComponent-82477b284447250a169abe8a87a25d25ad326f6a1df0dd66285206b68ddf4f63db89db1e52ccc7add0a4cbb35c5889ff5cd108c6b12a967a51550f17335e119f",
+            "file": "src/app/components/atoms/card/card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "storybook-header",
-            "styleUrls": [
-                "./header.css"
-            ],
+            "selector": "app-card",
+            "styleUrls": [],
             "styles": [],
-            "template": "<header>  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>",
-            "templateUrl": [],
+            "templateUrl": [
+                "./card.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-card',\n  imports: [],\n  templateUrl: './card.component.html',\n})\nexport class CardComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<section\n  class=\"max-auto s w-full rounded-lg border border-solid border-[var(--color-border-light)] bg-white px-4 py-3 sm:min-w-[380px] sm:px-6 sm:py-4 lg:px-8 lg:py-4\">\n  <ng-content></ng-content>\n</section>\n"
+        },
+        {
+            "name": "DashboardComponent",
+            "id": "component-DashboardComponent-53df2bb006723e69a92546d2c4c109e67b0a1a0681545b9c9d017d368068fc0e242279dbdb7e32aa4dfead3a3f2a12b08332a089683c4eeb7f13218121669992",
+            "file": "src/app/layouts/dashboard/dashboard.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-dashboard",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./dashboard.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "sidebarService",
+                    "defaultValue": "inject(SidebarService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "SidebarComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "NavbarComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, inject } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\nimport { SidebarComponent } from '../../components/molecules/sidebar/sidebar.component';\nimport { NavbarComponent } from '../../components/molecules/navbar/navbar.component';\n\nimport { SidebarService } from '../../services/sidebar/sidebar.service';\n\n@Component({\n  selector: 'app-dashboard',\n  imports: [RouterOutlet, SidebarComponent, NavbarComponent],\n  templateUrl: './dashboard.component.html',\n})\nexport class DashboardComponent {\n  sidebarService = inject(SidebarService);\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"flex h-screen w-full overflow-hidden\">\n  <!-- Sidebar -->\n  <app-sidebar></app-sidebar>\n\n  <!-- Main Page Content -->\n  <div\n    class=\"bg-bg-light-gray-4 flex grow flex-col content-start overflow-hidden\">\n    <!-- Header -->\n    <app-navbar></app-navbar>\n    <!-- Main Content -->\n    <div id=\"main-content\" class=\"grow overflow-auto\">\n      <div class=\"mx-auto px-4 sm:px-8 lg:container\">\n        <router-outlet></router-outlet>\n      </div>\n    </div>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "InputComponent",
+            "id": "component-InputComponent-c1a96191df2956be984234af81075cd95ccb1b43782aa49574c3adbf8a256714a7af0b3af15d616ac124cb275283342772fea086b29adc42aa0954c16c81f4fd",
+            "file": "src/app/components/atoms/input/input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-input",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./input.component.html"
+            ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "user",
-                    "defaultValue": "null",
+                    "name": "icon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 66,
-                    "type": "User | null",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'start'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "\"start\" | \"end\"",
+                    "decorators": []
+                },
+                {
+                    "name": "inputId",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "inputPlaceholder",
+                    "defaultValue": "'Enter any value'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "inputType",
+                    "defaultValue": "'password'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "HTMLInputElement",
+                    "decorators": []
+                },
+                {
+                    "name": "isPassword",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
                     "decorators": []
                 }
             ],
-            "outputsClass": [
+            "outputsClass": [],
+            "propertiesClass": [
                 {
-                    "name": "onCreateAccount",
-                    "defaultValue": "new EventEmitter<Event>()",
+                    "name": "showPassword",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 75,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogin",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 69,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogout",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 72,
-                    "type": "EventEmitter"
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
                 }
             ],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "getInputType",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "togglePasswordVisibility",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -284,8 +480,223 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "AngularSvgIconModule",
                     "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\nimport { AngularSvgIconModule } from 'angular-svg-icon';\n\n@Component({\n  selector: 'app-input',\n  standalone: true,\n  imports: [AngularSvgIconModule],\n  templateUrl: './input.component.html',\n})\nexport class InputComponent {\n  // input props\n  @Input() inputType: HTMLInputElement['type'] = 'password';\n  @Input() inputPlaceholder: string = 'Enter any value';\n  @Input() isPassword: boolean = false;\n  @Input() label: string = '';\n  @Input() inputId: string = '';\n  @Input() icon?: string;\n  @Input() iconPosition?: 'start' | 'end' = 'start';\n\n  // state\n  showPassword: boolean = false;\n\n  togglePasswordVisibility() {\n    this.showPassword = !this.showPassword;\n  }\n\n  getInputType() {\n    return this.isPassword && this.showPassword ? 'text' : this.inputType;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"relative flex w-full flex-col gap-1 sm:gap-1.5\">\n  @if (label) {\n    <label\n      [attr.for]=\"inputId\"\n      class=\"font-inter text-text-muted text-xs font-bold uppercase\"\n      >{{ label }}</label\n    >\n  }\n\n  <div class=\"relative w-full\">\n    @if (icon && iconPosition === 'start') {\n      <span class=\"absolute inset-y-0 start-3 flex items-center\">\n        <svg-icon [src]=\"icon\" class=\"text-text-muted h-4 w-4\" />\n      </span>\n    }\n\n    <input\n      class=\"placehoder:text-text-muted bg-bg-light-gray-2 placeholder:font-mulish h-[42px] w-full rounded-lg border border-[var(--border-light-2)] py-2 ps-4 placeholder:text-sm placeholder:font-normal placeholder:opacity-40\"\n      [class.ps-10]=\"icon && iconPosition === 'start'\"\n      [class.pe-10]=\"(icon && iconPosition === 'end') || isPassword\"\n      [type]=\"getInputType()\"\n      [placeholder]=\"inputPlaceholder\"\n      [id]=\"inputId\" />\n\n    @if (isPassword) {\n      <button\n        type=\"button\"\n        (click)=\"togglePasswordVisibility()\"\n        class=\"absolute inset-y-0 end-3 flex cursor-pointer items-center\">\n        <svg-icon\n          [src]=\"\n            showPassword\n              ? '/assets/icons/eye-open.svg'\n              : '/assets/icons/eye-close.svg'\n          \" />\n      </button>\n    } @else if (icon && iconPosition === 'end') {\n      <span class=\"absolute inset-y-0 end-3 flex items-center\">\n        <svg-icon [src]=\"icon\" class=\"text-text-muted h-4 w-4\" />\n      </span>\n    }\n  </div>\n</div>\n"
+        },
+        {
+            "name": "LoginCardComponent",
+            "id": "component-LoginCardComponent-cdac466cd654691087af0ab9c8b2efb89d969adda66cd1dc26befbea6f27f08f714d85d5db5ca0bde2e919c5f8a584dd27f3d259061913c77da2d776621f5fe8",
+            "file": "src/app/components/organisms/login-card/login-card.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login-card",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./login-card.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "CardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "LogoWithTextComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "LoginFormHeaderComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "LoginFormComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\nimport { CardComponent } from '../../atoms/card/card.component';\n\nimport { LogoWithTextComponent } from '../../molecules/logo-with-text/logo-with-text.component';\nimport { LoginFormHeaderComponent } from '../../molecules/login-form-header/login-form-header.component';\nimport { LoginFormComponent } from '../../molecules/login-form/login-form.component';\n\n@Component({\n  selector: 'app-login-card',\n  imports: [\n    CardComponent,\n    LogoWithTextComponent,\n    LoginFormHeaderComponent,\n    LoginFormComponent,\n  ],\n  templateUrl: './login-card.component.html',\n})\nexport class LoginCardComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-card>\n  <!-- Rapchat Logo with Dashboard Text -->\n  <div class=\"mt-4 sm:mt-8 lg:mt-10\">\n    <app-logo-with-text\n      class=\"flex flex-col items-center justify-center gap-3 sm:gap-4\" />\n  </div>\n  <!-- Rapchat Dashboard heading text -->\n  <div class=\"mt-4 text-center sm:mt-8\">\n    <app-login-form-header />\n  </div>\n  <!-- Login Form -->\n  <div class=\"mt-4 mb-4 sm:mt-8 sm:mb-16 lg:mb-20\">\n    <app-login-form />\n  </div>\n</app-card>\n"
+        },
+        {
+            "name": "LoginComponent",
+            "id": "component-LoginComponent-09e73ef1560a2d4955b045b96302f0ed5f462ee6d44a4eb8c3be01cf0d43388be9deaa0cc1a448e4feb15ce719187b414965d642e077a814c0e2984cd749daa3",
+            "file": "src/app/components/templates/login/login.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login-template",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./login.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "LoginCardComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\nimport { LoginCardComponent } from '../../organisms/login-card/login-card.component';\n\n@Component({\n  selector: 'app-login-template',\n  imports: [LoginCardComponent],\n  templateUrl: './login.component.html',\n})\nexport class LoginComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<app-login-card />\n"
+        },
+        {
+            "name": "LoginComponent",
+            "id": "component-LoginComponent-87428aa4e02170951cb70a71b6f41cb83463c84d56a1ea7488e6be9ed693490fd19cd734e38c00465b1bd3036a71f9aaca706616b275dd651de1edbb95d83f31-1",
+            "file": "src/app/pages/auth/login/login.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./login.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "LoginTemplate"
+                },
+                {
+                    "name": "AuthComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\nimport { LoginComponent as LoginTemplate } from '../../../components/templates/login/login.component';\nimport { AuthComponent } from '../../../layouts/auth/auth.component';\n\n@Component({\n  selector: 'app-login',\n  imports: [LoginTemplate, AuthComponent],\n  templateUrl: './login.component.html',\n})\nexport class LoginComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "LoginComponent-1",
+            "templateData": "<app-auth>\n  <app-login-template />\n</app-auth>\n"
+        },
+        {
+            "name": "LoginFormComponent",
+            "id": "component-LoginFormComponent-52c45682ac56450319b79935e9e6a69fe883f354c45581087298a5de7d604dbafe465b6651980e60fbd5e04e2cfbd79d9d625875608bdc4652286f410e8344ff",
+            "file": "src/app/components/molecules/login-form/login-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./login-form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "onSubmit",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "InputComponent",
+                    "type": "component"
                 },
                 {
                     "name": "ButtonComponent",
@@ -295,78 +706,221 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { Router } from '@angular/router';\n\nimport { ButtonComponent } from '../../atoms/button/button.component';\nimport { InputComponent } from '../../atoms/input/input.component';\n\n@Component({\n  selector: 'app-login-form',\n  imports: [InputComponent, ButtonComponent],\n  templateUrl: './login-form.component.html',\n})\nexport class LoginFormComponent {\n  constructor(private readonly router: Router) {}\n\n  onSubmit(event: Event) {\n    event.preventDefault();\n    console.log('Form submitted');\n    this.router.navigate(['/dashboard/users']);\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 6px 0 6px 10px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  margin-right: 10px;\n  color: #333;\n  font-size: 14px;\n}\n",
-                    "styleUrl": "./header.css"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
-            "extends": []
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<form class=\"grid gap-6\" (submit)=\"onSubmit($event)\">\n  <app-input\n    label=\"Email\"\n    inputType=\"email\"\n    inputPlaceholder=\"Email Address\"\n    inputId=\"emailAddress\" />\n  <app-input\n    label=\"Password\"\n    inputType=\"password\"\n    inputPlaceholder=\"Password\"\n    [isPassword]=\"true\"\n    inputId=\"password\" />\n  <app-button buttonType=\"submit\" class=\"w-full cursor-pointer\" buttonSize=\"xxl\"\n    >Log In</app-button\n  >\n</form>\n"
         },
         {
-            "name": "PageComponent",
-            "id": "component-PageComponent-21dd6eb370b4983b5c21c84d40e6f54d266a9d9af9889e6e76b35c43058bd53b3e451bad089d5adf4bea46647ba10265a2fa8cb15630398e75636307d4817fc6",
-            "file": "src/stories/page.component.ts",
+            "name": "LoginFormHeaderComponent",
+            "id": "component-LoginFormHeaderComponent-368b46bde1ff7c6356ab79f7c131958138c4f419b06ad7c6fc2d3fb8b702fa1850fa47fd0b7d71b50a435e705c4afe88cd357cbb41c6dc2550540092c3a94017",
+            "file": "src/app/components/molecules/login-form-header/login-form-header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "storybook-page",
-            "styleUrls": [
-                "./page.css"
-            ],
+            "selector": "app-login-form-header",
+            "styleUrls": [],
             "styles": [],
-            "template": "<article>  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>",
-            "templateUrl": [],
+            "templateUrl": [
+                "./login-form-header.component.html"
+            ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-login-form-header',\n  imports: [],\n  templateUrl: './login-form-header.component.html',\n})\nexport class LoginFormHeaderComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<section class=\"grid gap-3 sm:gap-3.5\">\n  <p\n    class=\"font-inter text-text-dark text-xl font-bold tracking-widest sm:text-2xl\">\n    Rapchat Dashboard\n  </p>\n  <p class=\"font-mulish text-text-muted text-sm font-normal tracking-widest\">\n    Enter your email and password below\n  </p>\n</section>\n"
+        },
+        {
+            "name": "LogoWithTextComponent",
+            "id": "component-LogoWithTextComponent-5a67518860eebbdc43eb4ee972e2ab4687d070d79596afe5bc256a635d2387c1b046d4ae9f3ce7eb73c910412458d53eb379dda86eebea79e574973af7d1fde8",
+            "file": "src/app/components/molecules/logo-with-text/logo-with-text.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-logo-with-text",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./logo-with-text.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
                 {
-                    "name": "user",
-                    "defaultValue": "null",
+                    "name": "svgIconColorClass",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "User | null",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "AngularSvgIconModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\nimport { AngularSvgIconModule } from 'angular-svg-icon';\n\n@Component({\n  selector: 'app-logo-with-text',\n  imports: [AngularSvgIconModule],\n  templateUrl: './logo-with-text.component.html',\n})\nexport class LogoWithTextComponent {\n  @Input() svgIconColorClass: string = '';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<svg-icon src=\"assets/icons/rc-logo.svg\" [class]=\"svgIconColorClass\" />\n\n<p class=\"font-inter text-text-gray text-xl\">Dashboard</p>\n"
+        },
+        {
+            "name": "MenuLinkComponent",
+            "id": "component-MenuLinkComponent-31e96fc3ca7f7c3fe3c3b19c6b0e1abf92d0613d49bc44fd1c493df1b4b80d2504157e48613c72e7379751ea7dac2c827f44af0397a72f7268623915682d0750",
+            "file": "src/app/components/molecules/menu-link/menu-link.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-menu-link",
+            "styleUrls": [],
+            "styles": [
+                "\n    .active {\n      color: white;\n      background-color: #1e293b; /* Darker background for active state */\n    }\n  "
+            ],
+            "templateUrl": [
+                "./menu-link.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "href",
+                    "defaultValue": "'#'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isActive",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 69
+                    "line": 31
+                },
+                {
+                    "name": "routeSubscription",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subscription",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34,
+                    "modifierKind": [
+                        123
+                    ]
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "doCreateAccount",
+                    "name": "ngOnDestroy",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 79,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "doLogin",
+                    "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 75,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "doLogout",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 71,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -378,27 +932,415 @@
             "standalone": true,
             "imports": [
                 {
+                    "name": "RouterLink"
+                },
+                {
                     "name": "CommonModule",
                     "type": "module"
                 },
                 {
-                    "name": "HeaderComponent",
+                    "name": "RouterLinkActive"
+                },
+                {
+                    "name": "AngularSvgIconModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {\n  Router,\n  NavigationEnd,\n  RouterLink,\n  RouterLinkActive,\n} from '@angular/router';\n\nimport { Subscription } from 'rxjs';\nimport { AngularSvgIconModule } from 'angular-svg-icon';\n\n@Component({\n  selector: 'app-menu-link',\n  standalone: true,\n  imports: [RouterLink, CommonModule, RouterLinkActive, AngularSvgIconModule], // Import CommonModule\n  templateUrl: './menu-link.component.html',\n  styles: `\n    .active {\n      color: white;\n      background-color: #1e293b; /* Darker background for active state */\n    }\n  `,\n})\nexport class MenuLinkComponent {\n  // Props\n  @Input() href = '#';\n  @Input() label = '';\n  @Input() icon = '';\n  // State variable to track if the link is active\n  isActive = false;\n\n  // Subscription to track router events\n  private routeSubscription!: Subscription;\n\n  // Inject the Angular Router Service\n  constructor(private readonly router: Router) {}\n\n  // Runs once after the component is initialized\n  ngOnInit() {\n    this.routeSubscription = this.router.events.subscribe(event => {\n      if (event instanceof NavigationEnd) {\n        this.isActive = this.router.url.startsWith(this.href); // Check if the current URL starts with the link's href\n      }\n    });\n\n    // Initial check to set the active state\n    this.isActive = this.router.url.startsWith(this.href);\n  }\n\n  // Runs once  before the component is destroyed\n  ngOnDestroy() {\n    if (this.routeSubscription) {\n      // Unsubscribe from events to prevents memory leaks\n      this.routeSubscription.unsubscribe();\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n    .active {\n      color: white;\n      background-color: #1e293b; /* Darker background for active state */\n    }\n  \n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 34,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div class=\"group relative h-full w-full\">\n  <a\n    [routerLink]=\"href\"\n    [routerLinkActive]=\"'active'\"\n    [ariaCurrentWhenActive]=\"isActive ? 'page' : undefined\"\n    class=\"text-text-muted hover:bg-bg-dark flex h-full items-center gap-2 rounded-md px-4 py-2 transition-colors duration-200\">\n    <span class=\"flex items-center gap-4 sm:gap-6\">\n      <svg-icon\n        [src]=\"icon\"\n        [svgStyle]=\"{\n          path: { fill: isActive ? 'white' : 'var(--color-text-muted)' },\n        }\" />\n\n      <span\n        class=\"font-mulish text-base group-hover:text-white\"\n        [ngClass]=\"isActive ? 'text-bg-light-gray-3' : 'text-text-muted'\">\n        {{ label }}\n      </span>\n    </span>\n  </a>\n\n  @if (isActive) {\n    <div\n      class=\"bg-bg-light-gray-3 absolute top-0 left-0 h-full w-[3px] transform transition-all duration-300\"\n      [ngClass]=\"{ 'scale-y-100': isActive, 'scale-y-0': !isActive }\"></div>\n  }\n</div>\n"
+        },
+        {
+            "name": "MusicFilterButtonsComponent",
+            "id": "component-MusicFilterButtonsComponent-f717e70b476a6aba031d46b2820a58d0665f53bdb5ad7ceb0d9a36efe247843af4dd7f81e1719600c70a192f22f07576d7b695d3145d8d4322a99a7253df7225",
+            "file": "src/app/components/molecules/music-filter-buttons/music-filter-buttons.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-music-filter-buttons",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./music-filter-buttons.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "filterOptions",
+                    "defaultValue": "[\n    { id: 1, name: 'Hot 100', isActive: true },\n    { id: 2, name: 'Suggested', isActive: false },\n    { id: 3, name: 'Verified', isActive: false },\n    { id: 4, name: 'Subscribers', isActive: false },\n    { id: 5, name: 'Producers', isActive: false },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "ButtonComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\nimport { ButtonComponent } from '../../atoms/button/button.component';\n\n@Component({\n  selector: 'app-music-filter-buttons',\n  imports: [ButtonComponent],\n  templateUrl: './music-filter-buttons.component.html',\n})\nexport class MusicFilterButtonsComponent {\n  filterOptions = [\n    { id: 1, name: 'Hot 100', isActive: true },\n    { id: 2, name: 'Suggested', isActive: false },\n    { id: 3, name: 'Verified', isActive: false },\n    { id: 4, name: 'Subscribers', isActive: false },\n    { id: 5, name: 'Producers', isActive: false },\n  ];\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"flex gap-4\">\n  @for (item of filterOptions; track item.id) {\n    <app-button\n      [buttonType]=\"'button'\"\n      [variant]=\"item.isActive ? 'default' : 'outlined'\"\n      [buttonSize]=\"'sm'\"\n      [class]=\"\n        'border-border-light font-inter text-bg-light-gray-6 cursor-pointer !font-bold uppercase shadow-none'\n      \">\n      {{ item.name }}\n    </app-button>\n  }\n</div>\n"
+        },
+        {
+            "name": "NavbarComponent",
+            "id": "component-NavbarComponent-70b15213f7194014742806906de97f0516424a6488cb8f1442c67764e4be19c12539ee4da8350b8439fec975050553292b9551682315f05b148b9bf425f82ffd",
+            "file": "src/app/components/molecules/navbar/navbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-navbar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./navbar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
                 {
-                    "data": ".storybook-page {\n  margin: 0 auto;\n  padding: 48px 20px;\n  max-width: 600px;\n  color: #333;\n  font-size: 14px;\n  line-height: 24px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-page h2 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 0 0 4px;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  color: inherit;\n}\n\n.storybook-page ul {\n  margin: 1em 0;\n  padding-left: 30px;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  vertical-align: top;\n  margin-right: 10px;\n  border-radius: 1em;\n  background: #e7fdd8;\n  padding: 4px 12px;\n  color: #357a14;\n  font-weight: 700;\n  font-size: 11px;\n  line-height: 12px;\n}\n\n.storybook-page .tip-wrapper {\n  margin-top: 40px;\n  margin-bottom: 40px;\n  font-size: 13px;\n  line-height: 20px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 3px;\n  margin-right: 4px;\n  width: 12px;\n  height: 12px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
-                    "styleUrl": "./page.css"
+                    "name": "sidebarService",
+                    "defaultValue": "inject(SidebarService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
                 }
             ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "AngularSvgIconModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, inject } from '@angular/core';\n\nimport { AngularSvgIconModule } from 'angular-svg-icon';\n\nimport { SidebarService } from '../../../services/sidebar/sidebar.service';\n\n@Component({\n  selector: 'app-navbar',\n  imports: [AngularSvgIconModule],\n  templateUrl: './navbar.component.html',\n})\nexport class NavbarComponent {\n  sidebarService = inject(SidebarService);\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
             "stylesData": "",
-            "extends": []
+            "extends": [],
+            "templateData": "<div class=\"relative\">\n  <div class=\"mx-auto px-5\">\n    <div class=\"flex items-center py-3.5\">\n      <!-- Mobile Navigation button -->\n      <div class=\"md:hidden\">\n        <button\n          class=\"bg-muted text-muted-foreground focus:ring-primary hover:bg-muted-foreground hover:text-muted inline-flex cursor-pointer items-center justify-center rounded-md p-2 hover:bg-gray-300/10 focus:ring-2 focus:outline-hidden focus:ring-inset\"\n          type=\"button\"\n          [attr.aria-expanded]=\"sidebarService.isSidebarOpen()\"\n          (click)=\"$event.stopPropagation(); sidebarService.toggleSidebar()\">\n          <span class=\"sr-only\">\n            {{\n              sidebarService.isSidebarOpen() ? 'Close Menu' : 'Open Menu'\n            }}</span\n          >\n          <svg-icon [src]=\"'assets/icons/menu.svg'\" [svgClass]=\"'h-4 w-4'\" />\n        </button>\n      </div>\n\n      <div class=\"flex flex-1 items-center justify-between ps-2\">\n        <h1 class=\"font-inter text-4xl font-bold\">Users</h1>\n\n        <div class=\"flex items-center gap-3\">\n          <p class=\"font-inter text-text-dark text-sm font-semibold\">\n            Seth Mills\n          </p>\n\n          <div\n            class=\"rounded-full border-[1.5px] border-[var(--color-border-light)]\">\n            <img\n              src=\"assets/profile-pic.jpg\"\n              alt=\"user profile\"\n              class=\"h-10 w-10 overflow-hidden rounded-full object-cover\" />\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "SidebarComponent",
+            "id": "component-SidebarComponent-b6a3f11a91c5c8cc839c22590579efae10cd71a363cf3759261ae3b3946fb62135c682c42018a7398a774e8563f515c8f66b6900fa640a09088eb0ebe8de294b",
+            "file": "src/app/components/molecules/sidebar/sidebar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-sidebar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sidebar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "links",
+                    "defaultValue": "[\n    {\n      label: 'Overview',\n      icon: 'assets/icons/overview.svg',\n      route: '/dashboard/overview',\n    },\n    {\n      label: 'A & R Charts',\n      icon: 'assets/icons/calendar.svg',\n      route: '/dashboard/ar-charts',\n    },\n    {\n      label: 'Challenges',\n      icon: 'assets/icons/eye-close.svg',\n      route: '/dashboard/challenges',\n    },\n    {\n      label: 'Songs',\n      icon: 'assets/icons/calendar.svg',\n      route: '/dashboard/songs',\n    },\n    {\n      label: 'Users',\n      icon: 'assets/icons/overview.svg',\n      route: '/dashboard/users',\n    },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "sidebarService",
+                    "defaultValue": "inject(SidebarService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onDocumentClick",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'document:click', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "document:click",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47
+                }
+            ],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "LogoWithTextComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MenuLinkComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "AngularSvgIconModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostListener, inject } from '@angular/core';\n\nimport { LogoWithTextComponent } from '../logo-with-text/logo-with-text.component';\nimport { MenuLinkComponent } from '../menu-link/menu-link.component';\n\nimport { SidebarService } from '../../../services/sidebar/sidebar.service';\nimport { AngularSvgIconModule } from 'angular-svg-icon';\n\n@Component({\n  selector: 'app-sidebar',\n  imports: [LogoWithTextComponent, MenuLinkComponent, AngularSvgIconModule],\n  templateUrl: './sidebar.component.html',\n})\nexport class SidebarComponent {\n  sidebarService = inject(SidebarService);\n\n  links = [\n    {\n      label: 'Overview',\n      icon: 'assets/icons/overview.svg',\n      route: '/dashboard/overview',\n    },\n    {\n      label: 'A & R Charts',\n      icon: 'assets/icons/calendar.svg',\n      route: '/dashboard/ar-charts',\n    },\n    {\n      label: 'Challenges',\n      icon: 'assets/icons/eye-close.svg',\n      route: '/dashboard/challenges',\n    },\n    {\n      label: 'Songs',\n      icon: 'assets/icons/calendar.svg',\n      route: '/dashboard/songs',\n    },\n    {\n      label: 'Users',\n      icon: 'assets/icons/overview.svg',\n      route: '/dashboard/users',\n    },\n  ];\n\n  // close sidebar when clicking outside on mobile\n  @HostListener('document:click', ['$event'])\n  onDocumentClick(event: MouseEvent) {\n    if (window.innerWidth < 768) {\n      const sidebarElement = document.querySelector('aside');\n      const navbarMenuButton = document.querySelector('button[aria-expanded]');\n\n      if (\n        this.sidebarService.isSidebarOpen() &&\n        sidebarElement &&\n        navbarMenuButton &&\n        !sidebarElement.contains(event.target as Node) &&\n        !navbarMenuButton.contains(event.target as Node)\n      ) {\n        this.sidebarService.closeSidebar();\n      }\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "@if (sidebarService.isSidebarOpen()) {\n  <div\n    class=\"fixed inset-0 z-40 bg-black/50 transition-opacity duration-300 md:hidden\"></div>\n}\n\n<aside\n  [class.md:flex]=\"true\"\n  [class.flex]=\"sidebarService.isSidebarOpen()\"\n  [class.hidden]=\"!sidebarService.isSidebarOpen()\"\n  [class.translate-x-0]=\"sidebarService.isSidebarOpen()\"\n  [class.translate-x-[-100%]]=\"!sidebarService.isSidebarOpen()\"\n  [class.md:translate-x-0]=\"true\"\n  class=\"bg-bg-sidebar hidden h-full w-[255px] flex-col shadow-lg transition-transform duration-300\"\n  [class.fixed]=\"sidebarService.isSidebarOpen()\"\n  [class.z-[50]]=\"sidebarService.isSidebarOpen()\">\n  <button\n    (click)=\"sidebarService.closeSidebar()\"\n    type=\"button\"\n    class=\"absolute top-2 right-2 block md:hidden\">\n    <svg-icon\n      src=\"assets/icons/close.svg\"\n      [svgClass]=\"'bg-white cursor-pointer'\" />\n  </button>\n\n  <!-- App Logo -->\n  <app-logo-with-text\n    class=\"flex items-center gap-6 ps-6 pt-10 sm:gap-4\"\n    svgIconColorClass=\"invert\" />\n\n  <nav class=\"mt-12.5\">\n    <ul>\n      @for (linkData of links; track linkData.label) {\n        <li class=\"mb-2 h-14\">\n          <app-menu-link\n            [href]=\"linkData.route\"\n            [label]=\"linkData.label\"\n            [icon]=\"linkData.icon\"\n            class=\"block h-full\" />\n        </li>\n      }\n    </ul>\n  </nav>\n\n  <hr class=\"bg-border-light mt-10 h-[2px]\" />\n  <div class=\"mt-4 h-14\">\n    <app-menu-link\n      href=\"/settings\"\n      label=\"Settings\"\n      [icon]=\"'assets/icons/settings.svg'\" />\n  </div>\n</aside>\n"
+        },
+        {
+            "name": "UsersComponent",
+            "id": "component-UsersComponent-dbf774eaaf966f1fe8403f257c930e9d2e6a2b133b6e4acbd404df8af289278ed10865bafbec6e72a34b4ad133d42978682af404e1118f3316b7cce0e4c87176",
+            "file": "src/app/pages/dashboard/users/users.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-users",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./users.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "InputComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "AngularSvgIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MusicFilterButtonsComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "UsersTableComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\nimport { InputComponent } from '../../../components/atoms/input/input.component';\nimport { AngularSvgIconModule } from 'angular-svg-icon';\nimport { MusicFilterButtonsComponent } from '../../../components/molecules/music-filter-buttons/music-filter-buttons.component';\nimport { UsersTableComponent } from '../../../components/molecules/users-table/users-table.component';\n\n@Component({\n  selector: 'app-users',\n  imports: [\n    InputComponent,\n    AngularSvgIconModule,\n    MusicFilterButtonsComponent,\n    UsersTableComponent,\n  ],\n  templateUrl: './users.component.html',\n})\nexport class UsersComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"rounded-lg border border-[var(--color-border-light)] bg-white p-6\">\n  <!-- Actions Div -->\n  <div\n    class=\"flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between\">\n    <p class=\"font-inter text-xl font-bold\">Users</p>\n\n    <!-- Search Input -->\n    <div class=\"w-full flex-1\">\n      <app-input\n        inputType=\"text\"\n        inputPlaceholder=\"Search\"\n        [icon]=\"'assets/icons/search.svg'\"\n        iconPosition=\"start\" />\n    </div>\n\n    <!-- Dropdown Icon -->\n    <button\n      class=\"border-bg-light-gray-5 text-bg-light-gray-6 inline-flex w-full cursor-pointer items-center justify-between rounded-md border px-4 py-2.5 text-sm font-semibold sm:w-[172px]\">\n      Actions\n      <span>\n        <svg-icon src=\"assets/icons/down-arrow.svg\" />\n      </span>\n    </button>\n  </div>\n  <!-- Music Filter Buttons -->\n  <div\n    class=\"scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted my-10 overflow-x-auto\">\n    <app-music-filter-buttons />\n  </div>\n\n  <app-users-table />\n</div>\n"
+        },
+        {
+            "name": "UsersTableComponent",
+            "id": "component-UsersTableComponent-9d392ef0e97ad1e265ecdfa8362760301fa17ae42d985c6df377df83f099c63c7ae74ace251ae2ae6ae3cc970e63d04651c9b6f0d364da625022117717bf9318",
+            "file": "src/app/components/molecules/users-table/users-table.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-users-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./users-table.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "tableHeadings",
+                    "defaultValue": "[\n    { id: 1, title: 'User Name and Email' },\n    { id: 2, title: 'Location' },\n    { id: 3, title: 'Signup Date' },\n    { id: 4, title: 'Fans' },\n    { id: 5, title: 'Songs' },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "users",
+                    "defaultValue": "[\n    {\n      name: 'Seth Mills',\n      email: 'Seth@ropchat.me',\n      country: 'USA',\n      city: 'Ohio',\n      signup: '27 Dec, 2019',\n      fans: '169.3K',\n      songs: 186,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Abram Workman',\n      email: 'AbramK@gmail.com',\n      country: 'USA',\n      city: 'Alabama',\n      signup: '04 Apr, 2016',\n      fans: '1.3M',\n      songs: 629,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Alfonso',\n      email: 'Alfonsoking.12@gmail.com',\n      country: 'Brazil',\n      city: 'Rio',\n      signup: '14 Jun, 2020',\n      fans: '537.7K',\n      songs: 518,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Ann Schleffer',\n      email: 'A.Schle@hotmail.com',\n      country: 'USA',\n      city: 'Illinois',\n      signup: '1 Feb, 2019',\n      fans: '531.3K',\n      songs: 61,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Jocelyn Bergson',\n      email: 'Jocelyn@yahoo.com',\n      country: 'France',\n      city: 'Paris',\n      signup: '19 Sep, 2018',\n      fans: '816.2K',\n      songs: 79,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Desirae',\n      email: 'Desiraem@gmail.com',\n      country: 'Canada',\n      city: 'Downtown',\n      signup: '27 Nov, 2015',\n      fans: '638.9K',\n      songs: 515,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Martin Ekstrom Bothman',\n      email: 'MartineB@yahoo.com',\n      country: 'Canada',\n      city: 'Toronto',\n      signup: '03 Oct, 2016',\n      fans: '2.3M',\n      songs: 716,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Wilson Vaccaro',\n      email: 'Wilson@vaccaro.com',\n      country: 'USA',\n      city: 'New york',\n      signup: '14 Sep, 2018',\n      fans: '825.1K',\n      songs: 372,\n      avatar: 'assets/user-avatar.png',\n    },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "AngularSvgIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { AngularSvgIconModule } from 'angular-svg-icon';\n\n@Component({\n  selector: 'app-users-table',\n  imports: [AngularSvgIconModule, CommonModule],\n  templateUrl: './users-table.component.html',\n})\nexport class UsersTableComponent {\n  tableHeadings = [\n    { id: 1, title: 'User Name and Email' },\n    { id: 2, title: 'Location' },\n    { id: 3, title: 'Signup Date' },\n    { id: 4, title: 'Fans' },\n    { id: 5, title: 'Songs' },\n  ];\n\n  users = [\n    {\n      name: 'Seth Mills',\n      email: 'Seth@ropchat.me',\n      country: 'USA',\n      city: 'Ohio',\n      signup: '27 Dec, 2019',\n      fans: '169.3K',\n      songs: 186,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Abram Workman',\n      email: 'AbramK@gmail.com',\n      country: 'USA',\n      city: 'Alabama',\n      signup: '04 Apr, 2016',\n      fans: '1.3M',\n      songs: 629,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Alfonso',\n      email: 'Alfonsoking.12@gmail.com',\n      country: 'Brazil',\n      city: 'Rio',\n      signup: '14 Jun, 2020',\n      fans: '537.7K',\n      songs: 518,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Ann Schleffer',\n      email: 'A.Schle@hotmail.com',\n      country: 'USA',\n      city: 'Illinois',\n      signup: '1 Feb, 2019',\n      fans: '531.3K',\n      songs: 61,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Jocelyn Bergson',\n      email: 'Jocelyn@yahoo.com',\n      country: 'France',\n      city: 'Paris',\n      signup: '19 Sep, 2018',\n      fans: '816.2K',\n      songs: 79,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Desirae',\n      email: 'Desiraem@gmail.com',\n      country: 'Canada',\n      city: 'Downtown',\n      signup: '27 Nov, 2015',\n      fans: '638.9K',\n      songs: 515,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Martin Ekstrom Bothman',\n      email: 'MartineB@yahoo.com',\n      country: 'Canada',\n      city: 'Toronto',\n      signup: '03 Oct, 2016',\n      fans: '2.3M',\n      songs: 716,\n      avatar: 'assets/user-avatar.png',\n    },\n    {\n      name: 'Wilson Vaccaro',\n      email: 'Wilson@vaccaro.com',\n      country: 'USA',\n      city: 'New york',\n      signup: '14 Sep, 2018',\n      fans: '825.1K',\n      songs: 372,\n      avatar: 'assets/user-avatar.png',\n    },\n  ];\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- Responsive Table Container -->\n<div class=\"w-full overflow-hidden\">\n  <!-- Scrollable container for small -->\n  <div class=\"relative overflow-x-auto shadow-md sm:rounded-lg\">\n    <table class=\"w-full text-left rtl:text-right\">\n      <!-- Table heading -->\n      <thead>\n        <tr>\n          @for (heading of tableHeadings; track heading.id) {\n            <th\n              class=\"font-inter text-bg-light-gray-6 px-3 py-3 text-sm font-bold whitespace-nowrap uppercase\"\n              [ngClass]=\"{\n                'min-w-[220px]': heading.title === 'User Name and Email',\n              }\"\n              scope=\"col\">\n              {{ heading.title }}\n            </th>\n          }\n          <th\n            class=\"font-inter text-bg-light-gray-6 w-10 px-3 py-3 text-sm font-bold whitespace-nowrap uppercase\"\n            scope=\"col\"></th>\n        </tr>\n      </thead>\n      <!-- Table Body -->\n      <tbody>\n        @for (user of users; track user.email) {\n          <tr\n            class=\"border-t-border-light-3 border-t-[0.4px] transition hover:bg-gray-50\">\n            <td class=\"px-3 py-4\">\n              <div class=\"flex items-center gap-4\">\n                <img\n                  [alt]=\"user.email\"\n                  [src]=\"user.avatar\"\n                  class=\"h-10 w-10 shrink-0 rounded-full object-cover\" />\n\n                <div class=\"min-w-0\">\n                  <p\n                    class=\"text-text-dark font-inter max-w-[180px] truncate text-sm font-semibold\">\n                    {{ user.name }}\n                  </p>\n                  <p\n                    class=\"font-mulish text-bg-light-gray-5 max-w-[180px] truncate text-xs font-normal\">\n                    {{ user.email }}\n                  </p>\n                </div>\n              </div>\n            </td>\n\n            <td class=\"px-3 py-4 whitespace-nowrap\">\n              <p class=\"text-text-dark font-inter text-sm font-semibold\">\n                {{ user.country }}\n              </p>\n              <p class=\"font-mulish text-bg-light-gray-5 text-xs font-normal\">\n                {{ user.city }}\n              </p>\n            </td>\n\n            <td\n              class=\"text-text-dark font-inter px-3 py-4 text-xs font-semibold whitespace-nowrap\">\n              {{ user.signup }}\n            </td>\n            <td\n              class=\"text-text-dark font-inter px-3 py-4 text-sm font-semibold whitespace-nowrap\">\n              {{ user.fans }}\n            </td>\n            <td\n              class=\"text-color-bg-sidebar-2 font-inter px-3 py-4 text-sm font-semibold whitespace-nowrap\">\n              {{ user.songs }} Songs\n            </td>\n\n            <td class=\"px-3 py-4 text-right whitespace-nowrap\">\n              <button class=\"cursor-pointer px-3 py-3 hover:bg-gray-700\">\n                <svg-icon src=\"assets/icons/vertical-3-dot.svg\" />\n              </button>\n            </td>\n          </tr>\n        }\n      </tbody>\n    </table>\n  </div>\n</div>\n"
         }
     ],
     "modules": [],
@@ -412,7 +1354,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
-                "defaultValue": "{\n  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]\n}"
+                "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes),\n    provideAngularSvgIcon(),\n    provideHttpClient(),\n  ],\n}"
             }
         ],
         "functions": [],
@@ -428,7 +1370,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
-                    "defaultValue": "{\n  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]\n}"
+                    "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes),\n    provideAngularSvgIcon(),\n    provideHttpClient(),\n  ],\n}"
                 }
             ]
         },
@@ -438,7 +1380,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 13,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -461,39 +1403,165 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/button.component.ts",
+                "filePath": "src/app/components/atoms/button/button.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
-            },
-            {
-                "filePath": "src/stories/header.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "HeaderComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
-                "filePath": "src/stories/page.component.ts",
+                "filePath": "src/app/components/atoms/card/card.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "PageComponent",
+                "name": "CardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/stories/user.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "User",
+                "filePath": "src/app/components/atoms/input/input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/molecules/login-form-header/login-form-header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginFormHeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/molecules/login-form/login-form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginFormComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/molecules/logo-with-text/logo-with-text.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LogoWithTextComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/molecules/menu-link/menu-link.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MenuLinkComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/molecules/music-filter-buttons/music-filter-buttons.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MusicFilterButtonsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/molecules/navbar/navbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/molecules/sidebar/sidebar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SidebarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/molecules/users-table/users-table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UsersTableComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/organisms/login-card/login-card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginCardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/templates/login/login.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/layouts/auth/auth.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AuthComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/layouts/dashboard/dashboard.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DashboardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/auth/login/login.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/dashboard/users/users.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UsersComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/sidebar/sidebar.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "SidebarService",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
                 "status": "low"
             }
         ]
