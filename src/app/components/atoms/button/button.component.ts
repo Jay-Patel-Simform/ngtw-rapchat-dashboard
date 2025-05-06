@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -13,6 +13,8 @@ export class ButtonComponent {
   @Input() buttonSize: 'default' | 'sm' | 'lg' | 'icon' | 'xxl' = 'default';
   @Input() disabled: boolean = false;
   @Input() class: string = '';
+
+  @Output() onClick = new EventEmitter<Event>();
 
   get buttonClasses() {
     const baseClasses =
@@ -35,5 +37,11 @@ export class ButtonComponent {
     }[this.buttonSize];
 
     return `${baseClasses} ${variantClasses} ${sizesClasses}`;
+  }
+
+  handleClick(event: Event) {
+    if (!this.disabled) {
+      this.onClick.emit(event);
+    }
   }
 }

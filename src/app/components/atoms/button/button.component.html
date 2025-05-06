@@ -1,6 +1,7 @@
 <button
   [type]="buttonType"
   [ngClass]="[buttonClasses, class]"
-  [disabled]="disabled">
+  [disabled]="disabled"
+  (click)="handleClick($event)">
   <ng-content></ng-content>
 </button>
