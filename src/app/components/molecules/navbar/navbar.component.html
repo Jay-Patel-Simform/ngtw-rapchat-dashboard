@@ -34,6 +34,24 @@
               alt="user profile"
               class="h-10 w-10 overflow-hidden rounded-full object-cover" />
           </div>
+
+          <div>
+            <app-button
+              buttonSize="sm"
+              variant="outlined"
+              [class]="
+                'cursor-pointer !rounded-full !p-2 hover:bg-gray-300/50 dark:bg-white'
+              "
+              (onClick)="toggleThemeMode()">
+              <svg-icon
+                [src]="
+                  themeService.isDark()
+                    ? 'assets/icons/sun.svg'
+                    : 'assets/icons/night.svg'
+                "
+                [svgClass]="'h-4 w-4'" />
+            </app-button>
+          </div>
         </div>
       </div>
     </div>
