@@ -3,17 +3,17 @@
     [routerLink]="href"
     [routerLinkActive]="'active'"
     [ariaCurrentWhenActive]="isActive ? 'page' : undefined"
-    class="text-text-muted hover:bg-bg-dark flex h-full items-center gap-2 rounded-md px-4 py-2 transition-colors duration-200">
+    class="text-text-secondary hover:bg-background-dark flex h-full items-center gap-2 px-4 py-2 transition-colors duration-200">
     <span class="flex items-center gap-4 sm:gap-6">
       <svg-icon
         [src]="icon"
         [svgStyle]="{
-          path: { fill: isActive ? 'white' : 'var(--color-text-muted)' },
+          path: { fill: isActive ? 'white' : 'var(--color-text-secondary)' },
         }" />
 
       <span
         class="font-mulish text-base group-hover:text-white"
-        [ngClass]="isActive ? 'text-bg-light-gray-3' : 'text-text-muted'">
+        [ngClass]="isActive ? 'text-text-tertiary' : 'text-text-secondary'">
         {{ label }}
       </span>
     </span>
@@ -21,7 +21,7 @@
 
   @if (isActive) {
     <div
-      class="bg-bg-light-gray-3 absolute top-0 left-0 h-full w-[3px] transform transition-all duration-300"
+      class="bg-background-tertiary absolute top-0 left-0 h-full w-[3px] transform transition-all duration-300"
       [ngClass]="{ 'scale-y-100': isActive, 'scale-y-0': !isActive }"></div>
   }
 </div>
