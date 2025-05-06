@@ -4,15 +4,9 @@
 }
 
 <aside
-  [class.md:flex]="true"
-  [class.flex]="sidebarService.isSidebarOpen()"
-  [class.hidden]="!sidebarService.isSidebarOpen()"
+  class="bg-bg-sidebar fixed inset-y-0 left-0 z-50 flex h-full w-[255px] transform flex-col shadow-lg transition-transform duration-300 ease-in-out md:relative md:flex md:translate-x-0"
   [class.translate-x-0]="sidebarService.isSidebarOpen()"
-  [class.translate-x-[-100%]]="!sidebarService.isSidebarOpen()"
-  [class.md:translate-x-0]="true"
-  class="bg-bg-sidebar hidden h-full w-[255px] flex-col shadow-lg transition-transform duration-300"
-  [class.fixed]="sidebarService.isSidebarOpen()"
-  [class.z-[50]]="sidebarService.isSidebarOpen()">
+  [class.-translate-x-full]="!sidebarService.isSidebarOpen()">
   <button
     (click)="sidebarService.closeSidebar()"
     type="button"
