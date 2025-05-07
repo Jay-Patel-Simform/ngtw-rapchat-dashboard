@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { LoginComponent } from './pages/auth/login/login.component';
-import { UsersComponent } from './pages/dashboard/users/users.component';
-
-import { DashboardComponent } from './layouts/dashboard/dashboard.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   // Default Route redirected to the login page
@@ -19,12 +17,14 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
-    children: [
-      {
-        path: 'users',
-        component: UsersComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./pages/dashboard/dashboard.routes').then(
+        mod => mod.DashboardRoutes
+      ),
+  },
+
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
