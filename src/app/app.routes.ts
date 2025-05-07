@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { LoginComponent } from './pages/auth/login/login.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
@@ -10,16 +9,18 @@ export const routes: Routes = [
     redirectTo: '/auth/login',
     pathMatch: 'full',
   },
-  // login page
+  // auth routes
   {
-    path: 'auth/login',
-    component: LoginComponent,
+    path: 'auth',
+    loadChildren: () =>
+      import('./pages/auth/auth.routes').then(routes => routes.AuthRoutes),
   },
+  //
   {
     path: 'dashboard',
     loadChildren: () =>
       import('./pages/dashboard/dashboard.routes').then(
-        mod => mod.DashboardRoutes
+        routes => routes.DashboardRoutes
       ),
   },
 

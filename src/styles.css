@@ -76,4 +76,31 @@
 
   /* Shadow */
   --color-shadow-primary: var(--shadow-primary);
+
+  /* animates the width over 3s using 13 steps 
+    steps(13,end) breaks the animation into 13 steps
+    forwards keeps the final state after animation ends
+    infinite makes the cursor blink forever
+  */
+  --animate-typewriting:
+    typewriting 3s steps(13, end) forwards, blink 0.7s step-end infinite;
+
+  @keyframes typewriting {
+    from {
+      width: 0;
+    }
+    to {
+      width: 13ch;
+    }
+  }
+
+  /* blinks right border at every 0.7s */
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+    100% {
+      border-color: white;
+    }
+  }
 }
