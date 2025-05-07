@@ -1,0 +1,55 @@
+@if (isOpen) {
+  <div
+    class="bg-opacity-50 fixed inset-0 z-40 flex items-center justify-center bg-black/60"
+    (click)="closeOnBackdrop($event)">
+    <div
+      #dialogElement
+      role="dialog"
+      [attr.aria-modal]="true"
+      [attr.aria-labelledby]="titleID"
+      [attr.aria-describedby]="descriptionId"
+      class="z-50 mx-4 w-full max-w-md overflow-hidden rounded-lg bg-white shadow-xl dark:bg-gray-800"
+      (click)="$event.stopPropagation()">
+      <!-- Header -->
+      <div
+        class="flex items-center justify-between border-b border-gray-200 p-4 dark:border-gray-700">
+        <h2
+          [id]="titleID"
+          class="text-lg font-medium text-gray-900 dark:text-white">
+          <ng-content select="[dialogTitle]"></ng-content>
+        </h2>
+        <button
+          type="button"
+          aria-label="Close dialog"
+          class="rounded-md text-gray-500 hover:text-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
+          (click)="close()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Content -->
+      <div class="p-4">
+        <div [id]="descriptionId">
+          <ng-content select="[dialogContent]"></ng-content>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        class="flex justify-end gap-3 border-t border-gray-200 p-4 dark:border-gray-700">
+        <ng-content select="[dialogFooter]"></ng-content>
+      </div>
+    </div>
+  </div>
+}

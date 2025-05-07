@@ -1,8 +1,8 @@
 <div>
-  <p
+  <!-- <p
     class="animate-typewriting my-5 w-0 overflow-hidden border-r-2 border-r-black whitespace-nowrap">
     Typewriter Effect
-  </p>
+  </p> -->
 
   <app-button
     (onClick)="handleClick()"
@@ -11,4 +11,38 @@
     [class]="'cursor-pointer'">
     Logout
   </app-button>
+
+  <div class="my-5">
+    <app-button
+      [class]="'cursor-pointer'"
+      buttonSize="lg"
+      variant="default"
+      buttonType="button"
+      (onClick)="dialogService.open()"
+      >Open Dialog</app-button
+    >
+  </div>
+
+  <app-dialog [(isOpen)]="dialogService.isDialogOpen">
+    <ng-container dialogTitle>Confirm Action</ng-container>
+
+    <div dialogContent>
+      <p class="text-gray-700 dark:text-gray-300">
+        Are you sure want to perform this action? This cannot be undone.
+      </p>
+    </div>
+
+    <div dialogFooter class="flex gap-2">
+      <button
+        (click)="dialogService.close()"
+        class="cursor-pointer rounded border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        Cancel
+      </button>
+      <button
+        (click)="dialogService.close()"
+        class="cursor-pointer rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        Confirm
+      </button>
+    </div>
+  </app-dialog>
 </div>
