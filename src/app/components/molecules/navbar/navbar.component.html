@@ -21,7 +21,9 @@
       </div>
 
       <div class="flex flex-1 items-center justify-between ps-2">
-        <h1 class="font-inter text-text-primary text-4xl font-bold">Users</h1>
+        <h1 class="font-inter text-text-primary text-4xl font-bold">
+          {{ navbarHeaderConfig[currentRoute] }}
+        </h1>
 
         <div class="flex items-center gap-3">
           <p class="font-inter text-text-primary text-sm font-semibold">
@@ -40,7 +42,7 @@
               buttonSize="sm"
               variant="outlined"
               [class]="
-                'cursor-pointer !rounded-full !p-2 hover:bg-gray-300/50 dark:bg-white'
+                'cursor-pointer rounded-full! p-2! hover:bg-gray-300/50 dark:bg-white'
               "
               (onClick)="toggleThemeMode()">
               <svg-icon
