@@ -1,12 +1,10 @@
 import {
   Component,
   ElementRef,
-  EventEmitter,
   HostListener,
   Input,
-  Output,
   ViewChild,
-  AfterViewChecked,
+  SimpleChanges,
 } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
@@ -17,18 +15,18 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 })
 export class DialogComponent {
   @Input() isOpen = false;
-  @Output() isOpenChange = new EventEmitter<boolean>();
   @ViewChild('dialogElement') dialogElement!: ElementRef<HTMLElement>;
 
-  readonly titleID = `dialog-title-${Math.random().toString(36).substring(2, 11)}`;
-  readonly descriptionId = `dialog-description-${Math.random().toString(36).substring(2, 11)}`;
+  @Input() titleID: string = '';
+  @Input() descriptionID: string = '';
+
+  @Input() closeServiceDialog!: (dialogId: string) => void;
 
   private previouslyFocusedElement: HTMLElement | null = null;
   private focusTrapped = false;
 
   open() {
     this.isOpen = true;
-    this.isOpenChange.emit(true);
     this.previouslyFocusedElement = document.activeElement as HTMLElement;
 
     // prevent scrolling of background content
@@ -39,12 +37,13 @@ export class DialogComponent {
 
   close() {
     this.isOpen = false;
-    this.isOpenChange.emit(false);
 
     // Re-enable scrolling
     document.body.style.overflow = '';
 
     this.restoreFocus();
+
+    this?.closeServiceDialog(this.titleID);
   }
 
   @HostListener('document:keydown.escape', ['$event'])
@@ -122,5 +121,15 @@ export class DialogComponent {
 
   ngOnDestroy() {
     this.restoreFocus();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['isOpen']) {
+      if (this.isOpen) {
+        this.open();
+      } else {
+        this.close();
+      }
+    }
   }
 }

@@ -7,7 +7,7 @@
       role="dialog"
       [attr.aria-modal]="true"
       [attr.aria-labelledby]="titleID"
-      [attr.aria-describedby]="descriptionId"
+      [attr.aria-describedby]="descriptionID"
       class="z-50 mx-4 w-full max-w-md overflow-hidden rounded-lg bg-white shadow-xl dark:bg-gray-800"
       (click)="$event.stopPropagation()">
       <!-- Header -->
@@ -40,7 +40,7 @@
 
       <!-- Content -->
       <div class="p-4">
-        <div [id]="descriptionId">
+        <div [id]="descriptionID">
           <ng-content select="[dialogContent]"></ng-content>
         </div>
       </div>
