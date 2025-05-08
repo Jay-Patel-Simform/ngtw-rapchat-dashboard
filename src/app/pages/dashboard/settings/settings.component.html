@@ -1,6 +1,6 @@
 <div>
   <p
-    class="animate-typewriting my-5 w-0 overflow-hidden border-r-2 border-r-black whitespace-nowrap">
+    class="animate-typewriting text-text-primary my-5 w-0 overflow-hidden border-r-2 border-r-black whitespace-nowrap dark:border-r-white">
     Typewriter Effect
   </p>
 
@@ -32,6 +32,7 @@
     >
   </div>
 
+  <!-- Dialog 1 -->
   <app-dialog
     [isOpen]="dialogService.isDialogOpen(DIALOG_LOGIN_ID)"
     [titleID]="DIALOG_LOGIN_ID"
@@ -55,7 +56,7 @@
       >
     </div>
   </app-dialog>
-
+  <!-- Dialog 2 -->
   <app-dialog
     [isOpen]="dialogService.isDialogOpen(DIALOG_2_ID)"
     [titleID]="DIALOG_2_ID"
